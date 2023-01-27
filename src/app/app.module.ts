@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ToolbarContentComponent } from './toolbar-content/toolbar-content.component';
+import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { MatButtonModule } from '@angular/material/button';
 
 import { TrackerComponent } from './pages/tracker/tracker.component';
@@ -18,7 +18,17 @@ import { IntegrationsComponent } from './pages/integrations/integrations.compone
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, ToolbarContentComponent, TrackerComponent, PomoTimerComponent, TimespansListComponent, StatisticsComponent, SettingsComponent, IntegrationsComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    ToolbarComponent,
+    TrackerComponent,
+    PomoTimerComponent,
+    TimespansListComponent,
+    StatisticsComponent,
+    SettingsComponent,
+    IntegrationsComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
