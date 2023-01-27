@@ -15,9 +15,10 @@ import { TimespansListComponent } from './pages/timespans-list/timespans-list.co
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { IntegrationsComponent } from './pages/integrations/integrations.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, ToolbarContentComponent, TrackerComponent, PomoTimerComponent, TimespansListComponent, StatisticsComponent, SettingsComponent, IntegrationsComponent],
+  declarations: [AppComponent, ToolbarContentComponent, TrackerComponent, PomoTimerComponent, TimespansListComponent, StatisticsComponent, SettingsComponent, IntegrationsComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
