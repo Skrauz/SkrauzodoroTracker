@@ -35,3 +35,8 @@ $skr-cyan-palette: (
     A700: #fff,
   )
 );
+
+@mixin dark-backg() {
+  color: #eee;
+  background-color: #333;
+}
