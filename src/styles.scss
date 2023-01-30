@@ -36,10 +36,10 @@ $SkrauzodoroTracker-theme: mat.define-dark-theme((color: (primary: $SkrauzodoroT
 html,
 body {
   height: 100%;
-  @include dark-backg();
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  @include dark-backg();
 }
