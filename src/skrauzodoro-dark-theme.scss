@@ -1,0 +1,37 @@
+$skr-orange-palette: (
+  50: #fcf6e1,
+  100: #f9e8b4,
+  200: #f4d984,
+  300: #f0cc55,
+  400: #eec035,
+  500: #ebb525,
+  600: #eaa91f,
+  700: #e9971c,
+  800: #e88819,
+  900: #e56b16,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: #fff,
+    400: #fff,
+    500: #fff,
+    600: #fff,
+    700: #fff,
+    800: #fff,
+    900: #fff,
+  )
+);
+
+$skr-cyan-palette: (
+  A100: #afeaf0,
+  A200: #7adce6,
+  A400: #00c3d5,
+  A700: #0093a2,
+  contrast: (
+    A100: rgba(black, 0.87),
+    A200: #fff,
+    A400: #fff,
+    A700: #fff,
+  )
+);
