@@ -1,33 +1,8 @@
 <div class="content">
   <div class="left-panel">
-    <mat-card>
-      <mat-card-content>
-        <div class="timer-string">{{timeString}}</div>
-        <div class="input-div">
-          <mat-form-field class="input-form-field">
-            <mat-label>Task Name</mat-label>
-            <input matInput type="text" [(ngModel)]="taskName">
-            <button *ngIf="taskName" matSuffix mat-icon-button aria-label="Clear" (click)="taskName=''">
-              <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-      <div class="controls">Play Pause Reset</div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card>
-    <mat-card-content>
-      <div class="input-div">
-        <mat-form-field class="input-form-field">
-          <mat-label>Task Name</mat-label>
-          <input matInput type="text" [(ngModel)]="taskName">
-          <button *ngIf="taskName" matSuffix mat-icon-button aria-label="Clear" (click)="taskName=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <app-tracker></app-tracker>
+  <mat-divider></mat-divider>
+  <app-add-project></app-add-project>
 </div>
 <div class="right-panel">
   <app-timespans-list></app-timespans-list>

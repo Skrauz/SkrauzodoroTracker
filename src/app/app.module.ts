@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { TrackerPageComponent } from './pages/tracker-page/tracker-page.component';
@@ -20,6 +21,9 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { IntegrationsComponent } from './pages/integrations/integrations.component';
 import { FooterComponent } from './footer/footer.component';
+import { TrackerComponent } from './pages/tracker-page/tracker/tracker.component';
+import { AddProjectComponent } from './pages/add-project/add-project.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { FooterComponent } from './footer/footer.component';
     SettingsComponent,
     IntegrationsComponent,
     FooterComponent,
+    TrackerComponent,
+    AddProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +49,8 @@ import { FooterComponent } from './footer/footer.component';
     MatInputModule,
     MatIconModule,
     FormsModule,
+    MatDividerModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,70 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-tracker',
+  template: `
+    <mat-card>
+      <mat-card-content>
+        <div class="timer-string">{{ timeString }}</div>
+        <div class="input-div">
+          <mat-form-field class="input-form-field">
+            <mat-label>Task Name</mat-label>
+            <input matInput type="text" [(ngModel)]="taskName" />
+            <button
+              *ngIf="taskName"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="taskName = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-form-field class="input-form-field">
+            <mat-label>Project</mat-label>
+            <mat-select [(ngModel)]="projectName">
+              <mat-option *ngFor="let project of projects" [value]="project">
+                {{ project }}
+                <!-- add color codes for the projects here later -->
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="controls">
+          <button class="control-button" mat-raised-button color="primary">
+            <i class="fa-solid fa-square"></i>
+          </button>
+          <button
+            class="control-button"
+            mat-raised-button
+            color="primary"
+            (click)="startTimer()"
+          >
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <!-- add a class toggle to this button later so that the color and the icon changes -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+  `,
+  styleUrls: ['./tracker.component.scss'],
+  // Create some shared stylesheets for the buttons and such
+})
+export class TrackerComponent {
+  taskName = '';
+  projectName = '';
+
+  projects = ['project1', 'project2', 'project3'];
+
+  timeString = '00:00:00';
+  seconds = 0;
+
+  timerInterval?: NodeJS.Timer;
+  startTimer() {
+    clearInterval(this.timerInterval)
+    const timerInterval = setInterval(() => {
+      this.seconds++;
+      this.timeString = new Date(this.seconds * 1000).toISOString().slice(11, 19);
+    }, 1000);
+  }
+}

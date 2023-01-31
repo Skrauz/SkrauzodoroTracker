@@ -1,0 +1,30 @@
+.timer-string {
+  font-size: 100px;
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+mat-card {
+  margin: 3rem 1rem;
+  min-width: 420px;
+}
+
+.input-div {
+  max-width: 400px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+
+  .control-button {
+    margin: auto 1rem;
+    width: 125px;
+    height: 50px;
+  }
+}
+

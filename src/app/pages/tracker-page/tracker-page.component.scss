@@ -1,41 +1,11 @@
 .content {
   display: flex;
   justify-content: space-around;
-  margin: 2rem;
-  height: 500px;
+  flex-wrap: wrap;
 }
 
-mat-card {
-  width: 60%;
-  margin: 1rem 3rem;
-  max-width: 500px;
-  height: 350px;
-
-  &-content {
-    display: flex;
-    flex-direction: column;
-
-    .input-div {
-      margin: 20px 0;
-      align-self: center;
-      width: 75%;
-
-      mat-form-field {
-        width: 100%;
-      }
-    }
-
-    .timer-string {
-      align-self: center;
-      font-size: 100px;
-      margin: 10px 0;
-    }
-
-    .controls {
-      margin: 10px 0;
-      align-self: center;
-    }
-  }
+.left-panel {
+  text-align: center;
 }
 
 app-timespans-list {
