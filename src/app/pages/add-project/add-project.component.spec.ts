@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PomoTimerComponent } from './pomo-timer.component';
+import { AddProjectComponent } from './add-project.component';
 
-describe('PomoTimerComponent', () => {
-  let component: PomoTimerComponent;
-  let fixture: ComponentFixture<PomoTimerComponent>;
+describe('AddProjectComponent', () => {
+  let component: AddProjectComponent;
+  let fixture: ComponentFixture<AddProjectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PomoTimerComponent ]
+      declarations: [ AddProjectComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PomoTimerComponent);
+    fixture = TestBed.createComponent(AddProjectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

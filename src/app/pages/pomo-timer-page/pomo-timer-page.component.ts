@@ -4,9 +4,9 @@ import { TimespansListComponent } from '../timespans-list/timespans-list.compone
 
 @Component({
   selector: 'app-pomo-timer',
-  templateUrl: './pomo-timer.component.html',
-  styleUrls: ['./pomo-timer.component.scss']
+  templateUrl: './pomo-timer-page.component.html',
+  styleUrls: ['./pomo-timer-page.component.scss']
 })
-export class PomoTimerComponent {
+export class PomoTimerPageComponent {
 
 }

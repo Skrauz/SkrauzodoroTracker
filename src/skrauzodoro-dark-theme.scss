@@ -1,14 +1,14 @@
-$skr-orange-palette: (
-  50: #fcf6e1,
-  100: #f9e8b4,
-  200: #f4d984,
-  300: #f0cc55,
-  400: #eec035,
-  500: #ebb525,
-  600: #eaa91f,
-  700: #e9971c,
-  800: #e88819,
-  900: #e56b16,
+$skr-amber-palette: (
+  50: #fff8e1,
+  100: #ffecb3,
+  200: #ffe082,
+  300: #ffd54f,
+  400: #ffca28,
+  500: #ffc107,
+  600: #ffb300,
+  700: #ffa000,
+  800: #ff8f00,
+  900: #ff6f00,
   contrast: (
     50: rgba(black, 0.87),
     100: rgba(black, 0.87),
@@ -24,10 +24,10 @@ $skr-orange-palette: (
 );
 
 $skr-cyan-palette: (
-  A100: #afeaf0,
-  A200: #7adce6,
-  A400: #00c3d5,
-  A700: #0093a2,
+  A100: #84ffff,
+  A200: #18ffff,
+  A400: #00e5ff,
+  A700: #00b8d4,
   contrast: (
     A100: rgba(black, 0.87),
     A200: #fff,
@@ -37,6 +37,6 @@ $skr-cyan-palette: (
 );
 
 @mixin dark-backg() {
-  color: #eee;
-  background-color: #333;
+  color: #fff;
+  background-color: #211d1b;
 }
