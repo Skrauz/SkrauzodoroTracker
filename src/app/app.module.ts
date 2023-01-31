@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
+import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { TrackerComponent } from './pages/tracker/tracker.component';
 import { PomoTimerComponent } from './pages/pomo-timer/pomo-timer.component';
 import { TimespansListComponent } from './pages/timespans-list/timespans-list.component';
@@ -35,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

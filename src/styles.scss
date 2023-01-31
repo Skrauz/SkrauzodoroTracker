@@ -13,8 +13,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$SkrauzodoroTracker-primary: mat.define-palette($skr-orange-palette, 800, 300, 900);
-$SkrauzodoroTracker-accent: mat.define-palette($skr-cyan-palette, A200, A100, A400);
+$SkrauzodoroTracker-primary: mat.define-palette($skr-amber-palette, 800, 300, 900);
+$SkrauzodoroTracker-accent: mat.define-palette($skr-cyan-palette, A700, A400, A700);
 
 // The warn palette is optional (defaults to red).
 $SkrauzodoroTracker-warn: mat.define-palette(mat.$red-palette);
@@ -25,6 +25,8 @@ $SkrauzodoroTracker-theme: mat.define-dark-theme((color: (primary: $SkrauzodoroT
       accent: $SkrauzodoroTracker-accent,
       warn: $SkrauzodoroTracker-warn,
     )));
+    // implement more themes later, let the user customize them
+    // Make the palette less saturated
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -40,6 +42,7 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  // font-size: large;
   @include dark-backg();
 }

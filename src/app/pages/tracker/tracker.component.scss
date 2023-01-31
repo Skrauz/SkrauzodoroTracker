@@ -1,14 +1,25 @@
 .content {
   display: flex;
+  justify-content: space-around;
+  margin: 2rem;
+  height: 500px;
 }
 
-.tracker {
-  width: 60%;
-  p {
-    width: 20%;
+mat-card {
+  width: 55%;
+  margin: 1rem 1.5rem;
+  max-width: 500px;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+
+    .task-name-input-div {
+      margin: 25px 0;
+    }
   }
 }
 
 app-timespans-list {
-  width: 40%;
+  width: 35%;
 }
