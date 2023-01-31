@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrackerComponent } from './tracker.component';
+import { TrackerPageComponent } from './tracker-page.component';
 
 describe('TrackerComponent', () => {
-  let component: TrackerComponent;
-  let fixture: ComponentFixture<TrackerComponent>;
+  let component: TrackerPageComponent;
+  let fixture: ComponentFixture<TrackerPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TrackerComponent ]
+      declarations: [ TrackerPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TrackerComponent);
+    fixture = TestBed.createComponent(TrackerPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
