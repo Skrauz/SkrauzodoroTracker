@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-add-project',
-  template: `
-    <mat-card>
-      <mat-card-content>
-        <h2>works</h2>
-      </mat-card-content>
-    </mat-card>
-  `,
-  styleUrls: ['./add-project.component.scss'],
+  templateUrl: './add-project.component.html',
+  styleUrls: ['./add-project.component.scss', './../shared-mat-card.scss'],
 })
-export class AddProjectComponent {}
+export class AddProjectComponent {
+  newProjectName = '';
+
+  submitNewProject() {
+    // add a popup window saying the project already exists if user enters the name of existing project
+  }
+}

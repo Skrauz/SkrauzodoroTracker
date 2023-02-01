@@ -31,14 +31,20 @@ import { Component } from '@angular/core';
           </mat-form-field>
         </div>
         <div class="controls">
-          <button class="control-button" mat-raised-button color="primary">
+          <button
+            class="control-button"
+            mat-raised-button
+            color="primary"
+            (click)="stopTracker()"
+          >
             <i class="fa-solid fa-square"></i>
           </button>
           <button
             class="control-button"
             mat-raised-button
             color="primary"
-            (click)="startTimer()"
+            [ngClass]="{ pressed: timerOn }"
+            (click)="startTracker()"
           >
             <i class="fa-solid fa-play"></i>
           </button>
@@ -47,7 +53,7 @@ import { Component } from '@angular/core';
       </mat-card-content>
     </mat-card>
   `,
-  styleUrls: ['./tracker.component.scss'],
+  styleUrls: ['./tracker.component.scss', './../../shared-mat-card.scss'],
   // Create some shared stylesheets for the buttons and such
 })
 export class TrackerComponent {
@@ -55,16 +61,32 @@ export class TrackerComponent {
   projectName = '';
 
   projects = ['project1', 'project2', 'project3'];
+  // placeholder projects
 
   timeString = '00:00:00';
+  timerOn = false;
   seconds = 0;
 
-  timerInterval?: NodeJS.Timer;
-  startTimer() {
-    clearInterval(this.timerInterval)
-    const timerInterval = setInterval(() => {
-      this.seconds++;
-      this.timeString = new Date(this.seconds * 1000).toISOString().slice(11, 19);
-    }, 1000);
+  clockInterval?: NodeJS.Timer;
+
+  startTracker() {
+    if (!this.timerOn) {
+      this.timerOn = true;
+      this.clockInterval = setInterval(() => {
+        this.seconds++;
+        this.timeString = new Date(this.seconds * 1000)
+          .toISOString()
+          .slice(11, 19);
+      }, 1000);
+    }
+  }
+
+  stopTracker() {
+    if (this.timerOn) {
+      this.timerOn = false;
+      clearInterval(this.clockInterval);
+      this.seconds = 0;
+      this.timeString = '00:00:00';
+    }
   }
 }
