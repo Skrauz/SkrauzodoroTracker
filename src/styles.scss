@@ -25,8 +25,8 @@ $SkrauzodoroTracker-theme: mat.define-dark-theme((color: (primary: $SkrauzodoroT
       accent: $SkrauzodoroTracker-accent,
       warn: $SkrauzodoroTracker-warn,
     )));
-    // implement more themes later, let the user customize them
-    // Make the palette less saturated
+// implement more themes later, let the user customize them
+// Make the palette less saturated
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -42,7 +42,7 @@ body {
 
 body {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace;
-  // font-size: large;
+  font-family: monospace;
+  // change the mat typography theme to also the monospace font
   @include dark-backg();
 }

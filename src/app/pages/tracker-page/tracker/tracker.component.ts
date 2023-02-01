@@ -47,7 +47,7 @@ import { Component } from '@angular/core';
       </mat-card-content>
     </mat-card>
   `,
-  styleUrls: ['./tracker.component.scss'],
+  styleUrls: ['./tracker.component.scss', './../../shared-mat-card.scss'],
   // Create some shared stylesheets for the buttons and such
 })
 export class TrackerComponent {
@@ -61,10 +61,12 @@ export class TrackerComponent {
 
   timerInterval?: NodeJS.Timer;
   startTimer() {
-    clearInterval(this.timerInterval)
+    clearInterval(this.timerInterval);
     const timerInterval = setInterval(() => {
       this.seconds++;
-      this.timeString = new Date(this.seconds * 1000).toISOString().slice(11, 19);
+      this.timeString = new Date(this.seconds * 1000)
+        .toISOString()
+        .slice(11, 19);
     }, 1000);
   }
 }

@@ -14,7 +14,10 @@ mat-card {
 }
 
 .input-div {
-  max-width: 400px;
+ display: flex;
+ flex-direction: column;
+ width: fit-content;
+ margin: auto;
 }
 
 .controls {

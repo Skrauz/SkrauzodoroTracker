@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
   template: `
     <mat-card>
       <mat-card-content>
-        <h2>works</h2>
+        <h2>Add Project Card</h2>
       </mat-card-content>
     </mat-card>
   `,
-  styleUrls: ['./add-project.component.scss'],
+  styleUrls: ['./add-project.component.scss','./../shared-mat-card.scss'],
 })
 export class AddProjectComponent {}
