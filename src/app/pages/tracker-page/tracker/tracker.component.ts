@@ -57,6 +57,7 @@ export class TrackerComponent {
   projects = ['project1', 'project2', 'project3'];
 
   timeString = '00:00:00';
+  timerOn = false;
   seconds = 0;
 
   timerInterval?: NodeJS.Timer;
