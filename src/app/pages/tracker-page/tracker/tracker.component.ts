@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Timespan } from 'src/app/database/timespanModel';
+import { TimespansService } from 'src/app/database/timespans.service';
 
 @Component({
   selector: 'app-tracker',
@@ -57,6 +59,8 @@ import { Component } from '@angular/core';
   // Create some shared stylesheets for the buttons and such
 })
 export class TrackerComponent {
+  constructor(private timespanService: TimespansService) {}
+
   taskName = '';
   projectName = '';
 
@@ -66,12 +70,13 @@ export class TrackerComponent {
   timeString = '00:00:00';
   timerOn = false;
   seconds = 0;
-
+  startTime: Date = new Date();
   clockInterval?: NodeJS.Timer;
 
   startTracker() {
     if (!this.timerOn) {
       this.timerOn = true;
+      this.startTime = new Date();
       this.clockInterval = setInterval(() => {
         this.seconds++;
         this.timeString = new Date(this.seconds * 1000)
@@ -84,9 +89,28 @@ export class TrackerComponent {
   stopTracker() {
     if (this.timerOn) {
       this.timerOn = false;
+
+      // Add record to the database
+      const timespan = this.constructTimespan();
+      this.timespanService.createTimespan(timespan).subscribe({error: (err) => {
+        alert("Failed to create a timespan");
+        console.error(err);
+      }})
+
       clearInterval(this.clockInterval);
       this.seconds = 0;
       this.timeString = '00:00:00';
     }
+  }
+
+  constructTimespan(): Timespan {
+    let timespan: Timespan = {name: "Unnamed Task", project: "Unnamed Project", mode: "tracker", startTime: this.startTime, endTime: new Date()}
+    if (this.taskName) {
+      timespan.name = this.taskName;
+    }
+    if (this.projectName) {
+      timespan.project = this.projectName;
+    }
+    return timespan;
   }
 }
