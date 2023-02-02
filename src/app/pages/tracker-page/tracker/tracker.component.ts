@@ -84,6 +84,7 @@ export class TrackerComponent {
   stopTracker() {
     if (this.timerOn) {
       this.timerOn = false;
+      // Add record to the database
       clearInterval(this.clockInterval);
       this.seconds = 0;
       this.timeString = '00:00:00';
