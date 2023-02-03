@@ -9,14 +9,16 @@ import { HttpClient } from '@angular/common/http';
 export class TimespansService {
   constructor(private httpClient: HttpClient) {}
 
-  private url = "http://localhost:5200";
+  // private url = "http://localhost:5050";
+  private url = "http://localhost:5050/api/timespans";
+
   private timespans$: Subject<Timespan[]> = new Subject();
 
-  // Read
+  // READ
   private refreshTimespans() {
     // if in the api each CRUD operation was on the different address, the requests would look like this
     // this.httpClient.get<Timespan[]>(`${this.url}/api/gettimespans`)
-    this.httpClient.get<Timespan[]>(`${this.url}/api/timespans`)
+    this.httpClient.get<Timespan[]>(this.url)
     .subscribe((timespans) => {
       this.timespans$.next(timespans);
     })
@@ -26,9 +28,20 @@ export class TimespansService {
     return this.timespans$;
   }
 
-  // Create
+  // CREATE
   createTimespan(timespan: Timespan): Observable<string> {
     // return this.httpClient.post(`${this.url}/api/createtimespan`, timespan, {responseType: "text"})
-    return this.httpClient.post(`${this.url}/api/timespans`, timespan, {responseType: "text"})
+    let response = this.httpClient.post(this.url , timespan, {responseType: "text"});
+    response
+    .subscribe({
+      next: () => {
+        // console.log('Timespan saved succesfuly');
+      },
+      error: (err) => {
+        alert('Failed to create a timespan');
+        console.error(err);
+      },
+    });
+    return response;
   }
 }

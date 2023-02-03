@@ -52,7 +52,7 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     MatDividerModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

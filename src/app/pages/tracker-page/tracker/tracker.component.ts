@@ -92,11 +92,9 @@ export class TrackerComponent {
 
       // Add record to the database
       const timespan = this.constructTimespan();
-      this.timespanService.createTimespan(timespan).subscribe({error: (err) => {
-        alert("Failed to create a timespan");
-        console.error(err);
-      }})
+      // console.log(timespan);
 
+      this.timespanService.createTimespan(timespan)
       clearInterval(this.clockInterval);
       this.seconds = 0;
       this.timeString = '00:00:00';
@@ -104,7 +102,13 @@ export class TrackerComponent {
   }
 
   constructTimespan(): Timespan {
-    let timespan: Timespan = {name: "Unnamed Task", project: "Unnamed Project", mode: "tracker", startTime: this.startTime, endTime: new Date()}
+    let timespan: Timespan = {
+      name: 'Unnamed Task',
+      project: 'Unnamed Project',
+      mode: 'tracker',
+      startTime: this.startTime,
+      endTime: new Date(),
+    };
     if (this.taskName) {
       timespan.name = this.taskName;
     }
