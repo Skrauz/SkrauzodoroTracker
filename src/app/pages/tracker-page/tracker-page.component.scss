@@ -2,9 +2,6 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 1rem auto;
+  margin: 2rem auto auto;
 }
-
-app-timespans-list {
-  width: 35%;
-}
+// Maybe put this css as a shared file

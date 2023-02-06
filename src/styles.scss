@@ -1,8 +1,8 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material'as mat;
 // Plus imports for other components in your app.
+@use 'skrauzodoro-theme' as skr;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -10,13 +10,11 @@
 @import './../node_modules/mdb-angular-ui-kit/assets/scss/mdb.scss';
 @include mat.core();
 
-@import 'skrauzodoro-dark-theme';
-
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$SkrauzodoroTracker-primary: mat.define-palette($skr-amber-palette, 800, 300, 900);
-$SkrauzodoroTracker-accent: mat.define-palette($skr-cyan-palette, A700, A400, A700);
+$SkrauzodoroTracker-primary: mat.define-palette(skr.$skr-amber-palette, 800, 300, 900);
+$SkrauzodoroTracker-accent: mat.define-palette(skr.$skr-cyan-palette, A700, A400, A700);
 
 // The warn palette is optional (defaults to red).
 $SkrauzodoroTracker-warn: mat.define-palette(mat.$red-palette);
@@ -25,10 +23,7 @@ $SkrauzodoroTracker-warn: mat.define-palette(mat.$red-palette);
 // theming systems such as "color" or "typography".
 $SkrauzodoroTracker-theme: mat.define-dark-theme((color: (primary: $SkrauzodoroTracker-primary,
       accent: $SkrauzodoroTracker-accent,
-      warn: $SkrauzodoroTracker-warn,
-    )));
-// implement more themes later, let the user customize them
-// Make the palette less saturated
+      warn: $SkrauzodoroTracker-warn)));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -45,8 +40,5 @@ body {
 body {
   margin: 0;
   font-family: monospace;
-  // change the mat typography theme to also the monospace font
-  @include dark-backg();
 }
-
 

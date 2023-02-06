@@ -1,0 +1,50 @@
+<div class="card bg-dark">
+  <div class="card-body">
+    <div class="timer-string">{{ timeString }}</div>
+    <div class="input-div">
+      <mat-form-field class="example-form-field">
+        <mat-label>Task Name</mat-label>
+        <input matInput type="text" [(ngModel)]="taskName" />
+        <button
+          *ngIf="taskName"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="taskName = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="input-form-field">
+        <mat-label>Project</mat-label>
+        <mat-select [(ngModel)]="projectName">
+          <mat-option *ngFor="let project of projects" [value]="project">
+            {{ project }}
+            <!-- add color codes for the projects here later -->
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="controls">
+      <button
+        type="button"
+        class="btn btn-primary control-button"
+        color="primary"
+        (click)="stopTracker()"
+      >
+        <i class="fa-solid fa-square"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary control-button"
+        color="primary"
+        [ngClass]="{ pressed: timerOn }"
+        (click)="startTracker()"
+      >
+        <i class="fa-solid fa-play"></i>
+      </button>
+      <!-- add a class toggle to this button later so that the color and the icon changes -->
+    </div>
+  </div>
+</div>

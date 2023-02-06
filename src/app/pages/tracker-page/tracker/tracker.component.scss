@@ -1,5 +1,6 @@
 @use "sass:map";
-@import './../../../../skrauzodoro-dark-theme.scss';
+@use "@angular/material" as mat;
+@use './../../../../skrauzodoro-theme' as skr;
 
 .timer-string {
   font-size: 100px;
@@ -7,10 +8,10 @@
   font-weight: 600;
 }
 
-mat-card {
+/* mat-card {
   margin: 3rem 1rem;
   min-width: 420px;
-}
+} */
 
 .controls {
   display: flex;
@@ -19,7 +20,7 @@ mat-card {
 
   .pressed {
 
-    background-color: darken(map.get($skr-amber-palette, 800), $amount: 15);
+    background-color: darken(map.get(skr.$skr-amber-palette, 800), $amount: 15);
   }
 
   .control-button {

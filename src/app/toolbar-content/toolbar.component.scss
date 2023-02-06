@@ -1,13 +1,15 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use './../../skrauzodoro-theme' as skr;
+
 .toolbar {
   height: 50px;
 }
 
-a {
+a, button {
   text-decoration: none;
-}
-
-button {
   margin: auto 0.2rem;
+  padding: 0.375rem 0.75rem;
 }
 
 span {
@@ -15,6 +17,5 @@ span {
 }
 
 #title {
-  margin: auto 1rem auto 0;
-  font-weight: bold;
+  margin: auto 1rem;
 }

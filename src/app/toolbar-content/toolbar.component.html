@@ -1,35 +1,37 @@
-<mat-toolbar color="primary" class="toolbar">
-  <h2 id="title" [routerLink]="['/tracker']"> Skrauzodoro Tracker </h2>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a href="/" class="navbar-brand" id="title">Skrauzodoro Tracker</a>
 
-  <button mat-raised-button color="primary" [routerLink]="['/tracker']">
-    <i class="fa-solid fa-stopwatch"></i> Time Tracker
-  </button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/tracker']">
+      <i class="fa-solid fa-stopwatch"></i> Time Tracker
+    </button>
 
-  <button mat-raised-button color="primary" [routerLink]="['/timer']">
-    <i class="fa-solid fa-hourglass"></i> Pomodoro Timer
-  </button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/timer']">
+      <i class="fa-solid fa-hourglass"></i> Pomodoro Timer
+    </button>
 
-  <button mat-raised-button color="primary" [routerLink]="['/stats']">
-    <i class="fa-solid fa-chart-line"></i> Statistics
-  </button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/stats']">
+      <i class="fa-solid fa-chart-line"></i> Statistics
+    </button>
 
-  <span> </span>
+    <span> </span>
 
-  <button mat-raised-button color="primary" [routerLink]="['/settings']">
-    <i class="fa-solid fa-gear"></i> Settings
-  </button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/settings']">
+      <i class="fa-solid fa-gear"></i> Settings
+    </button>
 
-  <button mat-raised-button color="primary" [routerLink]="['/integrations']">
-    <i class="fa-solid fa-plug"></i> Integrations
-  </button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/integrations']">
+      <i class="fa-solid fa-plug"></i> Integrations
+    </button>
 
-  <a color="primary"
-    mat-raised-button
-    href="https://github.com/Skrauz/SkrauzodoroTracker-Client"
-    target="_blank"
-    ><i class="fa-brands fa-github"></i> Github
-  </a>
-</mat-toolbar>
+    <a
+      type="button" class="btn btn-primary"
+      href="https://github.com/Skrauz/SkrauzodoroTracker-Client"
+      target="_blank"
+      ><i class="fa-brands fa-github"></i> Github
+    </a>
+  </div>
+</nav>
 
 <!-- Make Responsive -->
 <!-- Add icons to these buttons later -->
