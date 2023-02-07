@@ -3,15 +3,11 @@
 @use './../../../../skrauzodoro-theme' as skr;
 
 .timer-string {
-  font-size: 100px;
-  margin: 0 0 20px;
+  width: min-content;
+  font-size: clamp(2rem, 10vw, 6rem);
+  margin: 0 auto 20px;
   font-weight: 600;
 }
-
-/* mat-card {
-  margin: 3rem 1rem;
-  min-width: 420px;
-} */
 
 .controls {
   display: flex;

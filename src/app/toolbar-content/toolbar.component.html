@@ -1,35 +1,65 @@
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid d-lg-flex justify-content-center">
     <a href="/" class="navbar-brand" id="title">Skrauzodoro Tracker</a>
+    <div class="collapse navbar-collapse d-flex" id="navbar-menu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
+        <button
+          type="button"
+          class="btn btn-outline-primary my-1"
+          data-mdb-ripple-color="light"
+          [routerLink]="['/tracker']"
+        >
+          <i class="fa-solid fa-stopwatch"></i> Time Tracker
+        </button>
 
-    <button type="button" class="btn btn-primary" [routerLink]="['/tracker']">
-      <i class="fa-solid fa-stopwatch"></i> Time Tracker
-    </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary my-1"
+          data-mdb-ripple-color="primary"
+          [routerLink]="['/timer']"
+        >
+          <i class="fa-solid fa-hourglass"></i> Pomodoro Timer
+        </button>
 
-    <button type="button" class="btn btn-primary" [routerLink]="['/timer']">
-      <i class="fa-solid fa-hourglass"></i> Pomodoro Timer
-    </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary my-1"
+          data-mdb-ripple-color="light"
+          [routerLink]="['/stats']"
+        >
+          <i class="fa-solid fa-chart-line"></i> Statistics
+        </button>
 
-    <button type="button" class="btn btn-primary" [routerLink]="['/stats']">
-      <i class="fa-solid fa-chart-line"></i> Statistics
-    </button>
+        <span> </span>
 
-    <span> </span>
+        <button
+          type="button"
+          class="btn btn-outline-primary my-1"
+          data-mdb-ripple-color="light"
+          [routerLink]="['/settings']"
+        >
+          <i class="fa-solid fa-gear"></i> Settings
+        </button>
 
-    <button type="button" class="btn btn-primary" [routerLink]="['/settings']">
-      <i class="fa-solid fa-gear"></i> Settings
-    </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary my-1"
+          data-mdb-ripple-color="light"
+          [routerLink]="['/integrations']"
+        >
+          <i class="fa-solid fa-plug"></i> Integrations
+        </button>
 
-    <button type="button" class="btn btn-primary" [routerLink]="['/integrations']">
-      <i class="fa-solid fa-plug"></i> Integrations
-    </button>
-
-    <a
-      type="button" class="btn btn-primary"
-      href="https://github.com/Skrauz/SkrauzodoroTracker-Client"
-      target="_blank"
-      ><i class="fa-brands fa-github"></i> Github
-    </a>
+        <a
+          type="button"
+          class="btn btn-outline-primary my-1"
+          data-mdb-ripple-color="light"
+          href="https://github.com/Skrauz/SkrauzodoroTracker-Client"
+          target="_blank"
+          ><i class="fa-brands fa-github"></i> Github
+        </a>
+      </ul>
+    </div>
   </div>
 </nav>
 
