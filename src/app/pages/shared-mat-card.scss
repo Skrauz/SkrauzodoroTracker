@@ -3,12 +3,12 @@ mat-card {
 }
 
 mat-form-field {
-  width: 300px;
+  width: 100%;
 }
 
 .input-div {
+  max-width: 300px;
   display: flex;
   flex-direction: column;
-  width: fit-content;
   margin: auto;
  }
