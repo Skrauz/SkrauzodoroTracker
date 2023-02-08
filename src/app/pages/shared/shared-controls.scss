@@ -1,0 +1,20 @@
+@use "sass:map";
+@use './../../../skrauzodoro-theme' as skr;
+
+.pressed {
+  background-color: darken(map.get(skr.$skr-amber-palette, 800), $amount: 15);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem auto;
+
+  .control-button {
+    margin: auto 1rem;
+    width: 125px;
+    height: 50px;
+    font-size: larger;
+  }
+}
+

@@ -18,7 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { TrackerPageComponent } from './pages/tracker-page/tracker-page.component';
 import { PomoTimerPageComponent } from './pages/pomo-timer-page/pomo-timer-page.component';
-import { TimespansListComponent } from './pages/timespans-list/timespans-list.component';
+import { TimespansListComponent } from './pages/shared/timespans-list/timespans-list.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { IntegrationsComponent } from './pages/integrations/integrations.component';
@@ -26,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TrackerComponent } from './pages/tracker-page/tracker/tracker.component';
 import { AddProjectComponent } from './pages/add-project/add-project.component';
 import { MatSelectModule } from '@angular/material/select';
+import { PomoTimerComponent } from './pages/pomo-timer-page/pomo-timer/pomo-timer.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatSelectModule } from '@angular/material/select';
     FooterComponent,
     TrackerComponent,
     AddProjectComponent,
+    PomoTimerComponent,
   ],
   imports: [
     BrowserModule,

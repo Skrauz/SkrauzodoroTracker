@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
-import { TimespansListComponent } from '../timespans-list/timespans-list.component';
-
 @Component({
-  selector: 'app-pomo-timer',
+  selector: 'app-pomo-timer-page',
   templateUrl: './pomo-timer-page.component.html',
-  styleUrls: ['./pomo-timer-page.component.scss']
+  styleUrls: [
+    './pomo-timer-page.component.scss',
+    './../shared/shared-page-content.scss',
+  ],
 })
-export class PomoTimerPageComponent {
-
-}
+export class PomoTimerPageComponent {}
