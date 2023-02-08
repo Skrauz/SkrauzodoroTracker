@@ -1,5 +1,31 @@
 <div class="card bg-dark">
   <div class="card-body">
+    <div class="setting-div">
+      <button
+        type="button"
+        class="btn btn-primary setting-button"
+        [ngClass]="currentSetting == 'focusSession' ? 'pressed' : ''"
+        (click)="setSetting('focusSession')"
+      >
+        Focus Session
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary setting-button"
+        [ngClass]="currentSetting == 'shortBreak' ? 'pressed' : ''"
+        (click)="setSetting('shortBreak')"
+      >
+        Short Break
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary setting-button"
+        [ngClass]="currentSetting == 'longBreak' ? 'pressed' : ''"
+        (click)="setSetting('longBreak')"
+      >
+        Long Break
+      </button>
+    </div>
     <div class="timer-string">{{ timeString }}</div>
     <div class="input-div">
       <mat-form-field class="example-form-field">
@@ -31,7 +57,7 @@
         type="button"
         class="btn btn-primary control-button"
         color="primary"
-        (click)="stopTracker()"
+        (click)="manualFinishTimer()"
       >
         <i class="fa-solid fa-square"></i>
       </button>
@@ -39,11 +65,13 @@
         type="button"
         class="btn btn-primary control-button"
         color="primary"
-        [ngClass]="{ pressed: timerOn }"
-        (click)="startTracker()"
+        (click)="startTimer()"
       >
         <i class="fa-solid fa-play"></i>
       </button>
+
+
+      <!-- add a class toggle to this button later so that the color and the icon changes -->
     </div>
   </div>
 </div>

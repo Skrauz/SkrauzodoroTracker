@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { Timespan } from 'src/app/database/timespanModel';
 import { TimespansService } from 'src/app/database/timespans.service';
+import { TitleService } from 'src/app/title-service/title.service';
+
 
 @Component({
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',
-  styleUrls: ['./tracker.component.scss', './../../shared-mat-card.scss'],
-  // Create some shared stylesheets for the buttons and such
+  styleUrls: ['./tracker.component.scss', './../../shared/shared-inputs.scss'],
 })
 export class TrackerComponent {
-  constructor(private timespanService: TimespansService) {}
+  constructor(private timespanService: TimespansService, private titleService: TitleService) {
+    this.refreshTimer();
+  }
 
   taskName = '';
   projectName = '';
@@ -17,11 +20,23 @@ export class TrackerComponent {
   projects = ['project1', 'project2', 'project3'];
   // placeholder projects
 
-  timeString = '00:00:00';
+  timeString = '';
   timerOn = false;
   seconds = 0;
   startTime: Date = new Date();
   clockInterval?: NodeJS.Timer;
+
+  refreshTimer() {
+    this.refreshTimeString(0);
+    this.seconds = 0;
+  }
+
+  refreshTimeString(seconds: number) {
+    this.timeString = new Date(seconds * 1000)
+    .toISOString()
+    .slice(11, 19);
+    this.titleService.set(this.timeString);
+  }
 
   startTracker() {
     if (!this.timerOn) {
@@ -29,9 +44,7 @@ export class TrackerComponent {
       this.startTime = new Date();
       this.clockInterval = setInterval(() => {
         this.seconds++;
-        this.timeString = new Date(this.seconds * 1000)
-          .toISOString()
-          .slice(11, 19);
+        this.refreshTimeString(this.seconds)
       }, 1000);
     }
   }
@@ -46,8 +59,7 @@ export class TrackerComponent {
 
       this.timespanService.createTimespan(timespan);
       clearInterval(this.clockInterval);
-      this.seconds = 0;
-      this.timeString = '00:00:00';
+      this.refreshTimer();
     }
   }
 

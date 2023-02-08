@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TitleService } from './title-service/title.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Skrauzodoro Tracker';
+  constructor(private titleService: TitleService) {}
+
+  title = this.titleService.get()
 }

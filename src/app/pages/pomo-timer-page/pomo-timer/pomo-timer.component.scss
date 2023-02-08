@@ -1,0 +1,21 @@
+@use './../../shared/shared-timer-string';
+@use './../../shared/shared-controls.scss';
+
+.timer-string {
+  font-size: clamp(2rem, 12vw, 7rem);
+  margin: 10px auto 15px;
+}
+
+.setting-div {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.setting-button {
+  margin: 0.2rem;
+  font-size: 15px;
+  width: 160px;
+  padding: auto 0;
+  text-align: center;
+}
