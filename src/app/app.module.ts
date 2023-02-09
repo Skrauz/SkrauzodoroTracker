@@ -27,6 +27,7 @@ import { TrackerComponent } from './pages/tracker-page/tracker/tracker.component
 import { AddProjectComponent } from './pages/add-project/add-project.component';
 import { MatSelectModule } from '@angular/material/select';
 import { PomoTimerComponent } from './pages/pomo-timer-page/pomo-timer/pomo-timer.component';
+import { InfoCardComponent } from './pages/shared/info-card/info-card.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PomoTimerComponent } from './pages/pomo-timer-page/pomo-timer/pomo-time
     TrackerComponent,
     AddProjectComponent,
     PomoTimerComponent,
+    InfoCardComponent,
   ],
   imports: [
     BrowserModule,
