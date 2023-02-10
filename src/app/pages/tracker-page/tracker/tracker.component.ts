@@ -17,7 +17,7 @@ export class TrackerComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.titleService.setTitle('Skrauzodoro Timer')
+    this.titleService.setTitle('Skrauzodoro Timer');
   }
 
   taskName = '';
