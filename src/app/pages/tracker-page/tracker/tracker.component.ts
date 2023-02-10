@@ -18,6 +18,9 @@ export class TrackerComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.titleService.setTitle('Skrauzodoro Timer');
+    if(this.timerOn) {
+      this.stopTracker();
+    }
   }
 
   taskName = '';
@@ -57,11 +60,10 @@ export class TrackerComponent implements OnDestroy {
     if (this.timerOn) {
       this.timerOn = false;
 
-      // Add record to the database
+      // Construct and add a record to the database
       const timespan = this.constructTimespan();
-      // console.log(timespan);
-
       this.timespanService.createTimespan(timespan);
+
       clearInterval(this.clockInterval);
       this.refreshTimer();
     }

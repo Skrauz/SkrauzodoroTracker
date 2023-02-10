@@ -19,6 +19,9 @@ export class PomoTimerComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.titleService.setTitle('Skrauzodoro Timer');
+    if (this.timerOn) {
+      this.stopTimer();
+    }
   }
 
   timeString: string = '';
@@ -124,7 +127,6 @@ export class PomoTimerComponent implements OnDestroy {
       if(this.currentSetting == 'focusSession') {
         // Add record to the database
         const timespan = this.constructTimespan();
-        // console.log(timespan);
         this.timespanService.createTimespan(timespan);
       }
       clearInterval(this.clockInterval);
