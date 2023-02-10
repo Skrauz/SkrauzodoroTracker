@@ -1,17 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Timespan } from 'src/app/database/timespanModel';
 import { TimespansService } from 'src/app/database/timespans.service';
-import { TitleService } from 'src/app/title-service/title.service';
-
 
 @Component({
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',
   styleUrls: ['./tracker.component.scss', './../../shared/shared-inputs.scss'],
 })
-export class TrackerComponent {
-  constructor(private timespanService: TimespansService, private titleService: TitleService) {
+export class TrackerComponent implements OnDestroy {
+  constructor(
+    private timespanService: TimespansService,
+    private titleService: Title
+  ) {
     this.refreshTimer();
+  }
+
+  ngOnDestroy() {
+    this.titleService.setTitle('Skrauzodoro Timer');
+    if(this.timerOn) {
+      this.stopTracker();
+    }
   }
 
   taskName = '';
@@ -32,10 +41,8 @@ export class TrackerComponent {
   }
 
   refreshTimeString(seconds: number) {
-    this.timeString = new Date(seconds * 1000)
-    .toISOString()
-    .slice(11, 19);
-    this.titleService.set(this.timeString);
+    this.timeString = new Date(seconds * 1000).toISOString().slice(11, 19);
+    this.titleService.setTitle(`${this.timeString} - Skrauzodoro Tracker`);
   }
 
   startTracker() {
@@ -44,7 +51,7 @@ export class TrackerComponent {
       this.startTime = new Date();
       this.clockInterval = setInterval(() => {
         this.seconds++;
-        this.refreshTimeString(this.seconds)
+        this.refreshTimeString(this.seconds);
       }, 1000);
     }
   }
@@ -53,11 +60,10 @@ export class TrackerComponent {
     if (this.timerOn) {
       this.timerOn = false;
 
-      // Add record to the database
+      // Construct and add a record to the database
       const timespan = this.constructTimespan();
-      // console.log(timespan);
-
       this.timespanService.createTimespan(timespan);
+
       clearInterval(this.clockInterval);
       this.refreshTimer();
     }

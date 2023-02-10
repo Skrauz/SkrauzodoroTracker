@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Timespan } from 'src/app/database/timespanModel';
 import { TimespansService } from 'src/app/database/timespans.service';
-import { TitleService } from 'src/app/title-service/title.service';
 
 @Component({
   selector: 'app-pomo-timer',
@@ -11,10 +11,17 @@ import { TitleService } from 'src/app/title-service/title.service';
     './../../shared/shared-inputs.scss',
   ],
 })
-export class PomoTimerComponent {
-  constructor(private timespanService: TimespansService, private titleService: TitleService) {
+export class PomoTimerComponent implements OnDestroy {
+  constructor(private timespanService: TimespansService, private titleService: Title) {
     this.currentSetting = 'focusSession';
     this.refreshTimer(this.currentSetting);
+  }
+
+  ngOnDestroy() {
+    this.titleService.setTitle('Skrauzodoro Timer');
+    if (this.timerOn) {
+      this.stopTimer();
+    }
   }
 
   timeString: string = '';
@@ -46,7 +53,7 @@ export class PomoTimerComponent {
 
   refreshTimeString(seconds: number) {
     this.timeString = new Date(seconds * 1000).toISOString().slice(14, 19);
-    this.titleService.set(this.timeString);
+    this.titleService.setTitle(`${this.timeString} - Skrauzodoro Tracker`);
   }
 
   refreshTimer(setting: string) {
@@ -120,7 +127,6 @@ export class PomoTimerComponent {
       if(this.currentSetting == 'focusSession') {
         // Add record to the database
         const timespan = this.constructTimespan();
-        // console.log(timespan);
         this.timespanService.createTimespan(timespan);
       }
       clearInterval(this.clockInterval);
