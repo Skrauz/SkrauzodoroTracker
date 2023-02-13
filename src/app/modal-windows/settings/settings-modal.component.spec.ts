@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IntegrationsComponent } from './integrations.component';
+import { SettingsModalComponent } from './settings-modal.component';
 
-describe('IntegrationsComponent', () => {
-  let component: IntegrationsComponent;
-  let fixture: ComponentFixture<IntegrationsComponent>;
+describe('SettingsModalComponent', () => {
+  let component: SettingsModalComponent;
+  let fixture: ComponentFixture<SettingsModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IntegrationsComponent ]
+      declarations: [ SettingsModalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IntegrationsComponent);
+    fixture = TestBed.createComponent(SettingsModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

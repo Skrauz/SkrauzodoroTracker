@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Timespan } from 'src/app/database/timespanModel';
 import { TimespansService } from 'src/app/database/timespans.service';
+import { SettingsService } from 'src/app/settings-service/settings.service';
 
 @Component({
   selector: 'app-pomo-timer',
@@ -12,7 +13,7 @@ import { TimespansService } from 'src/app/database/timespans.service';
   ],
 })
 export class PomoTimerComponent implements OnDestroy {
-  constructor(private timespanService: TimespansService, private titleService: Title) {
+  constructor(private timespanService: TimespansService, private titleService: Title, private settingsService:SettingsService) {
     this.currentSetting = 'focusSession';
     this.refreshTimer(this.currentSetting);
   }
@@ -31,12 +32,11 @@ export class PomoTimerComponent implements OnDestroy {
   projects = ['project1', 'project2', 'project3'];
   // placeholder projects, fetch them from the database later
 
-  pomoLengthSeconds = 1500;
-  shortBreakSeconds = 300;
-  longBreakSeconds = 600;
-  pomosTillLongBreak = 4;
-  autoplay = true;
-  // Load settings from local storage later
+  pomoLengthSeconds = this.settingsService.settings.pomoLength * 60;
+  shortBreakSeconds = this.settingsService.settings.shortBreakLength * 60;
+  longBreakSeconds = this.settingsService.settings.longBreakLength * 60;
+  pomosTillLongBreak = this.settingsService.settings.pomosUntilLongBreak;
+  autoplay = this.settingsService.settings.pomodoroAutoplay;
 
   currentSetting: 'focusSession' | 'shortBreak' | 'longBreak';
 
