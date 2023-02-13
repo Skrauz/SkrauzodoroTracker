@@ -32,9 +32,9 @@ export class PomoTimerComponent implements OnDestroy {
   projects = ['project1', 'project2', 'project3'];
   // placeholder projects, fetch them from the database later
 
-  pomoLengthSeconds = this.settingsService.settings.pomoLength;
-  shortBreakSeconds = this.settingsService.settings.shortBreakLength;
-  longBreakSeconds = this.settingsService.settings.longBreakLength;
+  pomoLengthSeconds = this.settingsService.settings.pomoLength * 60;
+  shortBreakSeconds = this.settingsService.settings.shortBreakLength * 60;
+  longBreakSeconds = this.settingsService.settings.longBreakLength * 60;
   pomosTillLongBreak = this.settingsService.settings.pomosUntilLongBreak;
   autoplay = this.settingsService.settings.pomodoroAutoplay;
 
