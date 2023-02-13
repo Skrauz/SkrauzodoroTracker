@@ -36,7 +36,7 @@
           type="button"
           class="btn btn-primary my-1"
           data-mdb-ripple-color="light"
-          data-mdb-toggle="modal" data-mdb-target="#settingsModal"
+          (click)="openSettingsModal()"
         >
           <i class="fa-solid fa-gear"></i> Settings
         </button>
@@ -45,7 +45,7 @@
           type="button"
           class="btn btn-primary my-1"
           data-mdb-ripple-color="light"
-          data-mdb-toggle="modal" data-mdb-target="#integrationsModal"
+          (click)="openIntegrationsModal()"
         >
           <i class="fa-solid fa-plug"></i> Integrations
         </button>
