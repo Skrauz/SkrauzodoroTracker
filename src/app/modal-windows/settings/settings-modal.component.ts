@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
-import { Settings } from './settings';
+import { SettingsService } from 'src/app/settings-service/settings.service';
 
 @Component({
   selector: 'app-settings-modal',
@@ -12,68 +12,41 @@ import { Settings } from './settings';
   ],
 })
 export class SettingsModalComponent {
-  constructor(public modalRef: MdbModalRef<SettingsModalComponent>) {
-    this.settings = {
-      pomoLength: parseInt(this.getSetting('pomoLength')),
-      shortBreakLength: parseInt(this.getSetting('shortBreakLength')),
-      longBreakLength: parseInt(this.getSetting('LongBreakLength')),
-      pomodoroAutoplay: JSON.parse(this.getSetting('autoplay'))
-    };
-  }
-
-  getSetting(
-    setting: 'pomoLength' | 'shortBreakLength' | 'LongBreakLength' | 'autoplay'
-  ): string {
-    if (localStorage.getItem(setting)) {
-      return localStorage.getItem(setting)!;
-    }
-    switch (setting) {
-      case 'pomoLength':
-        localStorage.setItem('pomoLength', '25');
-        return '25';
-      case 'shortBreakLength':
-        localStorage.setItem('shortBreakLength', '5');
-        return '5';
-      case 'LongBreakLength':
-        localStorage.setItem('longBreakLength', '10');
-        return '10';
-      case 'autoplay':
-        localStorage.setItem('autoplay', 'false');
-        return 'false';
-    }
-  }
-
-  settings: Settings;
-
-  validateForm(): boolean {
-    if (
-      this.settings.pomoLength > 0 &&
-      this.settings.shortBreakLength > 0 &&
-      this.settings.longBreakLength > 0
-    )
-      return true;
-    return false;
-  }
+  constructor(
+    public modalRef: MdbModalRef<SettingsModalComponent>,
+    public settingsService: SettingsService
+  ) {}
 
   saveSettings() {
-    if (this.validateForm()) {
-      localStorage.setItem('pomoLength', String(this.settings.pomoLength));
+    if (this.settingsService.validateForm()) {
+      localStorage.setItem(
+        'pomoLength',
+        String(this.settingsService.settings.pomoLength)
+      );
       localStorage.setItem(
         'shortBreakLength',
-        String(this.settings.shortBreakLength)
+        String(this.settingsService.settings.shortBreakLength)
       );
       localStorage.setItem(
         'longBreakLength',
-        String(this.settings.longBreakLength)
+        String(this.settingsService.settings.longBreakLength)
       );
-      localStorage.setItem('autoplay', JSON.stringify(this.settings.pomodoroAutoplay));
+      localStorage.setItem(
+        'pomosUntilLongBreak',
+        String(this.settingsService.settings.pomosUntilLongBreak)
+      );
+      localStorage.setItem(
+        'autoplay',
+        JSON.stringify(this.settingsService.settings.pomodoroAutoplay)
+      );
     }
   }
 
   restoreDefaultSettings() {
-    this.settings.pomoLength = 25;
-    this.settings.shortBreakLength = 5;
-    this.settings.longBreakLength = 10;
-    this.settings.pomodoroAutoplay = false;
+    this.settingsService.settings.pomoLength = 25;
+    this.settingsService.settings.shortBreakLength = 5;
+    this.settingsService.settings.longBreakLength = 10;
+    this.settingsService.settings.pomosUntilLongBreak = 4;
+    this.settingsService.settings.pomodoroAutoplay = false;
   }
 }
