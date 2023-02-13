@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,6 +61,7 @@ import { IntegrationsModalComponent } from './modal-windows/integrations/integra
     HttpClientModule,
     LayoutModule,
     MdbModalModule,
+    MdbFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

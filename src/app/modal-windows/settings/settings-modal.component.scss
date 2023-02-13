@@ -1,0 +1,15 @@
+.exit-icon {
+  color: white;
+  font-size: large;
+
+  &:hover {
+    color: #ccc;
+  }
+}
+
+.input-div {
+  max-width: 600px;
+  label, input {
+    color: white
+  }
+}

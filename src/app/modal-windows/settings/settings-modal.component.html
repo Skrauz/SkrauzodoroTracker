@@ -1,26 +1,79 @@
 <div class="bg-dark">
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modalRef.close()"
-    ></button>
+    <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+    <button type="button" class="btn" (click)="modalRef.close()">
+      <i class="fa-solid fa-x exit-icon"></i>
+    </button>
   </div>
-  <div class="modal-body">
-    <h1>Settings</h1>
-    <h2>Settings</h2>
-    <h3>Settings</h3>
+  <div class="modal-body input-div">
+    <mdb-form-control>
+      <input
+        mdbInput
+        type="number"
+        id="formControlSm"
+        class="form-control form-control-lg"
+        [(ngModel)]="settings.pomoLength"
+        min="1"
+      />
+      <label mdbLabel class="form-label" for="formControlSm"
+        >Focus Session length (minutes):</label
+      >
+    </mdb-form-control>
+
+    <mdb-form-control>
+      <input
+        mdbInput
+        type="number"
+        id="formControlSm"
+        class="form-control form-control-lg"
+        [(ngModel)]="settings.shortBreakLength"
+        min="1"
+      />
+      <label mdbLabel class="form-label" for="formControlSm"
+        >Short Break length (minutes):</label
+      >
+    </mdb-form-control>
+
+    <mdb-form-control>
+      <input
+        mdbInput
+        type="number"
+        id="formControlSm"
+        class="form-control form-control-lg"
+        [(ngModel)]="settings.longBreakLength"
+        min="1"
+      />
+      <label mdbLabel class="form-label" for="formControlSm"
+        >Long Break length (minutes):</label
+      >
+    </mdb-form-control>
+
+    <div class="form-check">
+      <input
+        mdbCheckbox
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        [(ngModel)]="settings.pomodoroAutoplay"
+      />
+      <label class="form-check-label">
+        Pomodoro Autoplay
+      </label>
+    </div>
   </div>
   <div class="modal-footer">
     <button
       type="button"
-      class="btn btn-secondary"
+      class="btn btn-outline-primary"
       (click)="modalRef.close()"
     >
       Close
     </button>
-    <button type="button" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn btn-outline-primary" (click)="restoreDefaultSettings()">
+      Restore Defaults
+    </button>
+    <button type="button" class="btn btn-primary" (click)="saveSettings()">
+      Save Changes
+    </button>
   </div>
 </div>
