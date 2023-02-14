@@ -12,7 +12,7 @@ export class SettingsService {
       longBreakLength: parseInt(this.getSetting('LongBreakLength')),
       pomosUntilLongBreak: parseInt(this.getSetting('pomosUntilLongBreak')),
       pomodoroAutoplay: JSON.parse(this.getSetting('autoplay')),
-      alarmSoundSrc: this.getSetting('alarmSoundSrc'),
+      alarmSound: this.getSetting('alarmSound'),
     };
   }
 
@@ -25,7 +25,7 @@ export class SettingsService {
       | 'LongBreakLength'
       | 'autoplay'
       | 'pomosUntilLongBreak'
-      | 'alarmSoundSrc'
+      | 'alarmSound'
   ): string {
     if (localStorage.getItem(setting)) {
       return localStorage.getItem(setting)!;
@@ -46,9 +46,9 @@ export class SettingsService {
       case 'autoplay':
         localStorage.setItem('autoplay', 'true');
         return 'true';
-      case 'alarmSoundSrc':
-        localStorage.setItem('alarmSoundSrc', './../../assets/sound/bell1.wav');
-        return './../../assets/sound/bell1.wav';
+      case 'alarmSound':
+        localStorage.setItem('alarmSoundSrc', '0');
+        return '0';
     }
   }
 

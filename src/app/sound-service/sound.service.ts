@@ -12,9 +12,19 @@ export class SoundService {
     this.click.play();
   }
 
+  getAlarmSrc(alarm: string): string {
+    switch(alarm) {
+      case '1': return './../../assets/sound/bell1.wav';
+      case '2': return './../../assets/sound/bell2.wav';
+      case '3': return './../../assets/sound/bell3.wav';
+      case '4': return './../../assets/sound/bell4.wav';
+      default: return './../../assets/sound/bell1.wav';
+    }
+  }
+
   playAlarm() {
     const alarm = new Audio();
-    alarm.src = this.settingsService.settings.alarmSoundSrc;
+    alarm.src = this.getAlarmSrc(this.settingsService.settings.alarmSound);
     alarm.load();
     alarm.play();
   }
