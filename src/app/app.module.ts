@@ -20,7 +20,7 @@ import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { TrackerPageComponent } from './pages/tracker-page/tracker-page.component';
 import { PomoTimerPageComponent } from './pages/pomo-timer-page/pomo-timer-page.component';
 import { TimespansListComponent } from './pages/shared/timespans-list/timespans-list.component';
-import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { AnalyticsComponent } from './pages/analytics/analytics.component';
 import { FooterComponent } from './footer/footer.component';
 import { TrackerComponent } from './pages/tracker-page/tracker/tracker.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -38,7 +38,7 @@ import { IntegrationsModalComponent } from './modal-windows/integrations/integra
     TrackerPageComponent,
     PomoTimerPageComponent,
     TimespansListComponent,
-    StatisticsComponent,
+    AnalyticsComponent,
     FooterComponent,
     TrackerComponent,
     PomoTimerComponent,
