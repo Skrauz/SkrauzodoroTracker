@@ -3,5 +3,6 @@ export interface Settings {
   shortBreakLength: number,
   longBreakLength: number,
   pomosUntilLongBreak: number,
-  pomodoroAutoplay: boolean
+  pomodoroAutoplay: boolean,
+  alarmSound: string
 }

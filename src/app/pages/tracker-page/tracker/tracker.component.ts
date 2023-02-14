@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Timespan } from 'src/app/database/timespanModel';
 import { TimespansService } from 'src/app/database/timespans.service';
+import { SoundService } from 'src/app/sound-service/sound.service';
 
 @Component({
   selector: 'app-tracker',
@@ -11,7 +12,8 @@ import { TimespansService } from 'src/app/database/timespans.service';
 export class TrackerComponent implements OnDestroy {
   constructor(
     private timespanService: TimespansService,
-    private titleService: Title
+    private titleService: Title,
+    public soundService: SoundService
   ) {
     this.refreshTimer();
   }

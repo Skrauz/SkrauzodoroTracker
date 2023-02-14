@@ -70,10 +70,23 @@
         value=""
         [(ngModel)]="settingsService.settings.pomodoroAutoplay"
       />
-      <label class="form-check-label">
-        Pomodoro Autoplay
-      </label>
+      <label class="form-check-label"> Pomodoro Autoplay </label>
     </div>
+
+    <p>Alarm sound:</p>
+    <mdb-form-control>
+      <select
+        class="form-select"
+        aria-label="Alarm Sound"
+        class="bg-dark form-control form-control-lg"
+        [(ngModel)]="settingsService.settings.alarmSound"
+      >
+        <option value="1">Alarm 1</option>
+        <option value="2">Alarm 2</option>
+        <option value="3">Alarm 3</option>
+        <option value="4">Alarm 4</option>
+      </select>
+    </mdb-form-control>
   </div>
   <div class="modal-footer">
     <button
@@ -83,7 +96,14 @@
     >
       Close
     </button>
-    <button type="button" class="btn btn-outline-primary" (click)="restoreDefaultSettings()">
+    <button class="btn btn-outline-primary" (click)="testSound()">
+      Test Sound
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="restoreDefaultSettings()"
+    >
       Restore Defaults
     </button>
     <button type="button" class="btn btn-primary" (click)="saveSettings()">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { SettingsService } from 'src/app/settings-service/settings.service';
+import { SoundService } from 'src/app/sound-service/sound.service';
 
 @Component({
   selector: 'app-settings-modal',
@@ -14,8 +15,28 @@ import { SettingsService } from 'src/app/settings-service/settings.service';
 export class SettingsModalComponent {
   constructor(
     public modalRef: MdbModalRef<SettingsModalComponent>,
-    public settingsService: SettingsService
+    public settingsService: SettingsService,
+    public soundService: SoundService
   ) {}
+
+  testSound() {
+    if(this.settingsService.settings.alarmSound) {
+      const testSound = new Audio(
+        this.getAlarmSrc(this.settingsService.settings.alarmSound)
+      )
+      testSound.play();
+    }
+  }
+
+  getAlarmSrc(alarm: string): string {
+    switch(alarm) {
+      case '1': return './../../assets/sound/bell1.wav';
+      case '2': return './../../assets/sound/bell2.wav';
+      case '3': return './../../assets/sound/bell3.wav';
+      case '4': return './../../assets/sound/bell4.wav';
+      default: return './../../assets/sound/bell1.wav';
+    }
+  }
 
   saveSettings() {
     if (this.settingsService.validateForm()) {
@@ -39,6 +60,10 @@ export class SettingsModalComponent {
         'autoplay',
         JSON.stringify(this.settingsService.settings.pomodoroAutoplay)
       );
+      localStorage.setItem(
+        'alarmSound',
+        this.settingsService.settings.alarmSound
+      )
     }
   }
 
@@ -48,5 +73,6 @@ export class SettingsModalComponent {
     this.settingsService.settings.longBreakLength = 10;
     this.settingsService.settings.pomosUntilLongBreak = 4;
     this.settingsService.settings.pomodoroAutoplay = false;
+    this.settingsService.settings.alarmSound = '1';
   }
 }

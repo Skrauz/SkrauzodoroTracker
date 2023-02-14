@@ -57,7 +57,7 @@
         type="button"
         class="btn btn-primary control-button"
         color="primary"
-        (click)="manualFinishTimer()"
+        (click)="manualFinishTimer(); this.soundService.playClick()"
       >
         <i class="fa-solid fa-square"></i>
       </button>
@@ -65,7 +65,7 @@
         type="button"
         class="btn btn-primary control-button"
         color="primary"
-        (click)="startTimer()"
+        (click)="startTimer(); this.soundService.playClick()"
       >
         <i class="fa-solid fa-play"></i>
       </button>

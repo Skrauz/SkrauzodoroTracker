@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Timespan } from 'src/app/database/timespanModel';
 import { TimespansService } from 'src/app/database/timespans.service';
 import { SettingsService } from 'src/app/settings-service/settings.service';
+import { SoundService } from 'src/app/sound-service/sound.service';
 
 @Component({
   selector: 'app-pomo-timer',
@@ -13,7 +14,12 @@ import { SettingsService } from 'src/app/settings-service/settings.service';
   ],
 })
 export class PomoTimerComponent implements OnDestroy {
-  constructor(private timespanService: TimespansService, private titleService: Title, private settingsService:SettingsService) {
+  constructor(
+    private timespanService: TimespansService,
+    private titleService: Title,
+    private settingsService: SettingsService,
+    public soundService: SoundService
+  ) {
     this.currentSetting = 'focusSession';
     this.refreshTimer(this.currentSetting);
   }
@@ -96,10 +102,11 @@ export class PomoTimerComponent implements OnDestroy {
   finishTimer() {
     // popup alert the user on the end of the timer
 
-    if(this.currentSetting == 'focusSession') {
+    if (this.currentSetting == 'focusSession') {
       this.pomoStreak++;
     }
     this.stopTimer();
+    this.soundService.playAlarm();
     // switch to the next setting
     this.nextSetting();
     this.refreshTimer(this.currentSetting);
@@ -124,7 +131,7 @@ export class PomoTimerComponent implements OnDestroy {
   stopTimer() {
     if (this.timerOn) {
       this.timerOn = false;
-      if(this.currentSetting == 'focusSession') {
+      if (this.currentSetting == 'focusSession') {
         // Add record to the database
         const timespan = this.constructTimespan();
         this.timespanService.createTimespan(timespan);
