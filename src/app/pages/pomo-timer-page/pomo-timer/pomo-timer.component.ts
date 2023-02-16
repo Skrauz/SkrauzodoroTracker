@@ -4,6 +4,7 @@ import { Timespan } from 'src/app/database/timespans/timespanModel';
 import { TimespansService } from 'src/app/database/timespans/timespans.service';
 import { SettingsService } from 'src/app/settings-service/settings.service';
 import { SoundService } from 'src/app/sound-service/sound.service';
+import { ProjectsService } from 'src/app/database/projects/projects.service';
 
 @Component({
   selector: 'app-pomo-timer',
@@ -18,7 +19,8 @@ export class PomoTimerComponent implements OnDestroy {
     private timespanService: TimespansService,
     private titleService: Title,
     private settingsService: SettingsService,
-    public soundService: SoundService
+    public soundService: SoundService,
+    private projectsService: ProjectsService
   ) {
     this.currentSetting = 'focusSession';
     this.refreshTimer(this.currentSetting);
@@ -92,7 +94,6 @@ export class PomoTimerComponent implements OnDestroy {
       }, 1000);
     }
   }
-  // Implement sound upon clicking the control buttons
 
   manualFinishTimer() {
     this.stopTimer();
