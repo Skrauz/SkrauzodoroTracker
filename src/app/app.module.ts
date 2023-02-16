@@ -30,6 +30,7 @@ import { InfoCardComponent } from './pages/shared/info-card/info-card.component'
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { SettingsModalComponent } from './modal-windows/settings/settings-modal.component';
 import { IntegrationsModalComponent } from './modal-windows/integrations/integrations-modal.component';
+import { ProjectsModalComponent } from './modal-windows/projects/projects-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { IntegrationsModalComponent } from './modal-windows/integrations/integra
     InfoCardComponent,
     SettingsModalComponent,
     IntegrationsModalComponent,
+    ProjectsModalComponent,
   ],
   imports: [
     BrowserModule,

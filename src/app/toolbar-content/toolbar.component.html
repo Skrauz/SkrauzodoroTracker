@@ -9,7 +9,7 @@
           data-mdb-ripple-color="dark"
           [routerLink]="['/tracker']"
         >
-          <i class="fa-solid fa-stopwatch"></i> Time Tracker
+          <i class="fa-solid fa-stopwatch"></i> Tracker
         </button>
 
         <button
@@ -18,7 +18,7 @@
           data-mdb-ripple-color="primary"
           [routerLink]="['/timer']"
         >
-          <i class="fa-solid fa-hourglass"></i> Pomodoro Timer
+          <i class="fa-solid fa-hourglass"></i> Pomo Timer
         </button>
 
         <button
@@ -28,6 +28,15 @@
           [routerLink]="['/analytics']"
         >
           <i class="fa-solid fa-chart-line"></i> Analytics
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary my-1"
+          data-mdb-ripple-color="light"
+          (click)="openProjectsModal()"
+        >
+        <i class="fa-solid fa-list-check"></i> Projects
         </button>
 
         <span> </span>
