@@ -12,4 +12,8 @@ mdb-form-control {
   display: flex;
   flex-direction: column;
   margin: auto;
+
+  label, input {
+    color: white
+  }
  }

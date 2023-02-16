@@ -1,0 +1,45 @@
+<div class="bg-dark">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Projects</h5>
+    <button type="button" class="btn" (click)="modalRef.close()">
+      <i class="fa-solid fa-x exit-icon"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-bordered border-primary">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let project of projects$ | async">
+          <td>{{project.name}}</td>
+          <td>
+            <button class="btn-sm btn-success">
+              Finish
+            </button>
+            <button class="btn-sm btn-secondary">
+              Edit
+            </button>
+            <button class="btn-sm btn-warn">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-add-project></app-add-project>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modalRef.close()"
+    >
+      Close
+    </button>
+  </div>
+</div>
