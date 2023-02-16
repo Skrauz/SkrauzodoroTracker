@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Timespan } from './timespanModel';
+import { Timespan } from '../timespans/timespanModel';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

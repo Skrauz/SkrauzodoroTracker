@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Timespan } from 'src/app/database/timespanModel';
-import { TimespansService } from 'src/app/database/timespans.service';
+import { Timespan } from 'src/app/database/timespans/timespanModel';
+import { TimespansService } from 'src/app/database/timespans/timespans.service';
 import { SettingsService } from 'src/app/settings-service/settings.service';
 import { SoundService } from 'src/app/sound-service/sound.service';
 

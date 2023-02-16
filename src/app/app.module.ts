@@ -19,7 +19,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { TrackerPageComponent } from './pages/tracker-page/tracker-page.component';
 import { PomoTimerPageComponent } from './pages/pomo-timer-page/pomo-timer-page.component';
-import { TimespansListComponent } from './pages/shared/timespans-list/timespans-list.component';
 import { AnalyticsComponent } from './pages/analytics/analytics.component';
 import { FooterComponent } from './footer/footer.component';
 import { TrackerComponent } from './pages/tracker-page/tracker/tracker.component';
@@ -31,6 +30,7 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { SettingsModalComponent } from './modal-windows/settings/settings-modal.component';
 import { IntegrationsModalComponent } from './modal-windows/integrations/integrations-modal.component';
 import { ProjectsModalComponent } from './modal-windows/projects/projects-modal.component';
+import { AddProjectComponent } from './modal-windows/projects/add-project/add-project.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { ProjectsModalComponent } from './modal-windows/projects/projects-modal.
     ToolbarComponent,
     TrackerPageComponent,
     PomoTimerPageComponent,
-    TimespansListComponent,
     AnalyticsComponent,
     FooterComponent,
     TrackerComponent,
@@ -47,6 +46,7 @@ import { ProjectsModalComponent } from './modal-windows/projects/projects-modal.
     SettingsModalComponent,
     IntegrationsModalComponent,
     ProjectsModalComponent,
+    AddProjectComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,4 +8,6 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 })
 export class ProjectsModalComponent {
   constructor(public modalRef: MdbModalRef<ProjectsModalComponent>) {}
+
+
 }

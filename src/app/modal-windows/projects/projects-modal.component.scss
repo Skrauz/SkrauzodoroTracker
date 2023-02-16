@@ -1,0 +1,22 @@
+@mixin table-elements {
+  color: #fff;
+  font-size: large;
+}
+
+.exit-icon {
+  @include table-elements();
+
+  &:hover {
+    color: #ccc;
+  }
+}
+
+.table {
+  @include table-elements();
+
+  th, td{
+    &:hover{
+      color: #ccc;
+    }
+  }
+}
