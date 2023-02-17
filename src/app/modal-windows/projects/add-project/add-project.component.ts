@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from 'src/app/database/projects/projects.service';
+import { ProjectsModalComponent } from '../projects-modal.component';
 
 @Component({
   selector: 'app-add-project',
@@ -10,7 +11,7 @@ import { ProjectsService } from 'src/app/database/projects/projects.service';
         <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="projectName" />
         <label mdbLabel class="form-label" for="form1">Project Name</label>
       </mdb-form-control>
-      <button class="btn btn-primary" id="add-button" (click)="addProject()">
+      <button class="btn btn-primary" id="add-button" (click)="addProject(this.projectName)">
         Add Project <i class="fa-solid fa-plus"></i>
       </button>
     </div>
@@ -22,18 +23,15 @@ import { ProjectsService } from 'src/app/database/projects/projects.service';
   ],
 })
 export class AddProjectComponent {
-  constructor(private projectsService: ProjectsService) {}
+  constructor(private projectsService: ProjectsService, private projectsModalComponent: ProjectsModalComponent) {}
 
   projectName: string = '';
 
-  // Todo: Check if project already exists in the database
-  addProject() {
-    if(!this.projectName) return;
-    this.projectName = '';
+  addProject(projectName: string) {
+    if(!projectName) return;
 
-    const project = {
-      name: this.projectName
-    }
-    this.projectsService.createProject(project);
+    this.projectsService.createProject({name: projectName});
+    this.projectsModalComponent.refreshProjects();
+    this.projectName = '';
   }
 }
