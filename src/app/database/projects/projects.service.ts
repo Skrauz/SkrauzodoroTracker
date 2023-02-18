@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from './projectModel';
-import { Observable, Subject, count } from 'rxjs'
-import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs'
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,36 +15,44 @@ export class ProjectsService {
   private projects: Project[] = [];
 
   // Read
-  private refreshProjects() {
+  getProjects(): Subject<Project[]> {
     this.httpClient.get<Project[]>(this.url)
     .subscribe((projects) => {
       this.projects = projects;
       this.projects$.next(projects);
     })
+    return this.projects$;
   }
 
-  getProjects(): Subject<Project[]> {
-    this.refreshProjects();
-    return this.projects$;
+  getProject(projectName: string): Subject<Project> {
+    let project$: Subject<Project> = new Subject();
+    this.httpClient.get<Project>(`${this.url}/${projectName}`).subscribe((project) => {
+      project$.next(project);
+    });
+    return project$;
   }
 
   // Create
   createProject(project: Project): Observable<string> {
+    if(this.hasDuplicates(project)) {
+      alert("Project names must be unique");
+      return new Observable();
+    }
     let response = this.httpClient.post(this.url , project, {responseType: "text"});
     response
     .subscribe({
       next: () => {
-        console.log('project saved succesfuly');
+        console.log('project saved successfuly');
       },
       error: (err) => {
-        alert('Failed to create a Project');
+        alert('Failed to create a project');
         console.error(err);
       },
     });
     return response;
   }
 
-  checkForDuplicates(project: Project): boolean {
+  hasDuplicates(project: Project): boolean {
     let duplicates: boolean = false;
     this.projects.forEach((pr) => {
       if(pr.name == project.name) {
@@ -54,5 +62,22 @@ export class ProjectsService {
       }
     })
     return duplicates;
+  }
+
+  // Update
+  updateProject(name: string, project: Project): Observable<string> {
+    let params$ = new HttpParams();
+    params$.append("name", name);
+    let response = this.httpClient.post(this.url, project, {responseType: "text", params: params$});
+    response.subscribe({
+      next: () => {
+        console.log("Project updated successfuly");
+      },
+      error: (err) => {
+        alert("Failed to update the project");
+        console.error(err);
+      }
+    });
+    return response;
   }
 }

@@ -31,6 +31,7 @@ import { SettingsModalComponent } from './modal-windows/settings/settings-modal.
 import { IntegrationsModalComponent } from './modal-windows/integrations/integrations-modal.component';
 import { ProjectsModalComponent } from './modal-windows/projects/projects-modal.component';
 import { AddProjectComponent } from './modal-windows/projects/add-project/add-project.component';
+import { EditProjectComponent } from './modal-windows/projects/edit-project/edit-project.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AddProjectComponent } from './modal-windows/projects/add-project/add-pr
     IntegrationsModalComponent,
     ProjectsModalComponent,
     AddProjectComponent,
+    EditProjectComponent,
   ],
   imports: [
     BrowserModule,

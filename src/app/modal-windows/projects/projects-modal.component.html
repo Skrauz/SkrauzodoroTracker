@@ -6,39 +6,30 @@
     </button>
   </div>
   <div class="modal-body">
-    <table class="table table-bordered border-primary">
+    <table class="table table-bordered">
       <thead>
-        <tr>
-          <th>Name</th>
-          <th>Options</th>
+        <tr class="d-flex">
+          <th scope="col" class="flex-grow-1">Name</th>
+          <th scope="col" class="width-options">Options</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let project of projects$ | async">
-          <td>{{project.name}}</td>
-          <td>
-            <button class="btn-sm btn-success">
-              Finish
-            </button>
-            <button class="btn-sm btn-secondary">
-              Edit
-            </button>
-            <button class="btn-sm btn-warn">
-              Delete
-            </button>
+        <tr class="d-flex" *ngFor="let project of projects$ | async">
+          <td class="flex-grow-1 name-div">
+              {{ project.name }}
+          </td>
+          <td class="d-flex flex-column width-options">
+            <button type="button" class="btn btn-warning" (click)="openEditProject(project.name)">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <app-add-project></app-add-project>
+    <app-add-project (refresh)="refreshProjects()"></app-add-project>
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="modalRef.close()"
-    >
+    <button type="button" class="btn btn-primary" (click)="modalRef.close()">
       Close
     </button>
   </div>
