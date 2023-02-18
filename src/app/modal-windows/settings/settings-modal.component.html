@@ -14,6 +14,7 @@
         class="form-control form-control-lg"
         [(ngModel)]="settingsService.settings.pomoLength"
         min="1"
+        required
       />
       <label mdbLabel class="form-label" for="formControlSm"
         >Focus Session length (minutes):</label
@@ -28,6 +29,7 @@
         class="form-control form-control-lg"
         [(ngModel)]="settingsService.settings.shortBreakLength"
         min="1"
+        required
       />
       <label mdbLabel class="form-label" for="formControlSm"
         >Short Break length (minutes):</label
@@ -42,6 +44,7 @@
         class="form-control form-control-lg"
         [(ngModel)]="settingsService.settings.longBreakLength"
         min="1"
+        required
       />
       <label mdbLabel class="form-label" for="formControlSm"
         >Long Break length (minutes):</label
@@ -56,6 +59,7 @@
         class="form-control form-control-lg"
         [(ngModel)]="settingsService.settings.pomosUntilLongBreak"
         min="1"
+        required
       />
       <label mdbLabel class="form-label" for="formControlSm"
         >Pomodoros until long break:</label

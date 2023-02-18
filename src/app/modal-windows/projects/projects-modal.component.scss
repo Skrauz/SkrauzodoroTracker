@@ -11,12 +11,32 @@
   }
 }
 
+.form-check {
+  margin-bottom: 5px;
+}
+
 .table {
   @include table-elements();
 
-  th, td{
-    &:hover{
+  .btn {
+    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  th,
+  td {
+    &:hover {
       color: #ccc;
     }
   }
+
+  .name-div {
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+.width-options {
+  min-width: 8rem;
 }

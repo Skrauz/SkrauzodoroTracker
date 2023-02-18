@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ProjectsService } from 'src/app/database/projects/projects.service';
-import { ProjectsModalComponent } from '../projects-modal.component';
 
 @Component({
   selector: 'app-add-project',
@@ -8,7 +7,7 @@ import { ProjectsModalComponent } from '../projects-modal.component';
     <div class="input-div">
       <p>Add new project:</p>
       <mdb-form-control>
-        <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="projectName" />
+        <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="projectName" required />
         <label mdbLabel class="form-label" for="form1">Project Name</label>
       </mdb-form-control>
       <button class="btn btn-primary" id="add-button" (click)="addProject(this.projectName)">
@@ -23,15 +22,17 @@ import { ProjectsModalComponent } from '../projects-modal.component';
   ],
 })
 export class AddProjectComponent {
-  constructor(private projectsService: ProjectsService, private projectsModalComponent: ProjectsModalComponent) {}
+  constructor(private projectsService: ProjectsService) {}
 
   projectName: string = '';
+
+  @Output() refresh = new EventEmitter();
 
   addProject(projectName: string) {
     if(!projectName) return;
 
     this.projectsService.createProject({name: projectName});
-    this.projectsModalComponent.refreshProjects();
     this.projectName = '';
+    this.refresh.emit();
   }
 }
