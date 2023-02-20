@@ -32,13 +32,17 @@ export class ProjectsModalComponent implements OnInit {
 
   editProjectModalRef?: MdbModalRef<EditProjectComponent> | null = null;
 
+    refreshProjects(): void {
+      this.projects$ = this.projectsService.getProjects();
+    }
+
   openEditProject(name$: string) {
     this.editProjectModalRef = this.modalService.open(EditProjectComponent, {
       data: {name: name$}
     });
   }
 
-  refreshProjects(): void {
-    this.projects$ = this.projectsService.getProjects();
+  deleteProject(id: string) {
+    this.projectsService.deleteProject(id);
   }
 }

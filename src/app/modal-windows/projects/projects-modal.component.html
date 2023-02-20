@@ -21,7 +21,7 @@
           </td>
           <td class="d-flex flex-column width-options">
             <button type="button" class="btn btn-warning" (click)="openEditProject(project.name)">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-danger" (click)="deleteProject(project._id!)">Delete</button>
           </td>
         </tr>
       </tbody>
