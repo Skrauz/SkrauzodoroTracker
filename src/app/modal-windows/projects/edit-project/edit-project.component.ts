@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { ProjectsService } from 'src/app/database/projects/projects.service';
 import { Project } from 'src/app/database/projects/projectModel';
+import { ProjectsModalComponent } from '../projects-modal.component';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -69,7 +70,7 @@ export class EditProjectComponent implements OnInit {
       alert("Project name is required")
       return;
     }
-    this.projectsService.updateProject(this.name, this.project)
+    this.projectsService.updateProject(this.project)
     this.modalRef.close();
     this.name = '';
   }

@@ -65,17 +65,15 @@ export class ProjectsService {
   }
 
   // Update
-  updateProject(name: string, project: Project): Observable<string> {
-    let params$ = new HttpParams();
-    params$.append("name", name);
-    let response = this.httpClient.post(this.url, project, {responseType: "text", params: params$});
+  updateProject(project: Project): Observable<string> {
+    let response = this.httpClient.put(`${this.url}/${project._id}`, project, {responseType: "text"});
     response.subscribe({
-      next: () => {
-        console.log("Project updated successfuly");
+      next: (res) => {
+        // console.log(res);
       },
       error: (err) => {
-        alert("Failed to update the project");
         console.error(err);
+        alert("Failed to update the project");
       }
     });
     return response;
