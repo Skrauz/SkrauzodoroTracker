@@ -18,7 +18,7 @@ export class TrackerComponent implements OnDestroy, OnInit {
     private timespanService: TimespansService,
     private titleService: Title,
     public soundService: SoundService,
-    private projectService: ProjectsService
+    private projectsService: ProjectsService
   ) {
     this.refreshTimer();
   }
@@ -30,7 +30,7 @@ export class TrackerComponent implements OnDestroy, OnInit {
   projects$: Observable<Project[]> = new Observable();
 
   refreshProjects() {
-    this.projects$ = this.projectService.getProjects();
+    this.projects$ = this.projectsService.getProjects();
   }
 
   ngOnDestroy() {
