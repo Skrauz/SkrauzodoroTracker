@@ -1,10 +1,12 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Timespan } from 'src/app/database/timespans/timespanModel';
 import { TimespansService } from 'src/app/database/timespans/timespans.service';
-import { SettingsService } from 'src/app/settings-service/settings.service';
 import { SoundService } from 'src/app/sound-service/sound.service';
+import { Project } from 'src/app/database/projects/projectModel';
 import { ProjectsService } from 'src/app/database/projects/projects.service';
+import { SettingsService } from 'src/app/settings-service/settings.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pomo-timer',
@@ -33,12 +35,20 @@ export class PomoTimerComponent implements OnDestroy {
     }
   }
 
+  ngOnInit(): void {
+    this.refreshProjects();
+  }
+
+  projects$: Observable<Project[]> = new Observable();
+
+  refreshProjects() {
+    this.projects$ = this.projectsService.getProjects();
+  }
+
   timeString: string = '';
 
   taskName = '';
   projectName = '';
-  projects = ['project1', 'project2', 'project3'];
-  // placeholder projects, fetch them from the database later
 
   pomoLengthSeconds = this.settingsService.settings.pomoLength * 60;
   shortBreakSeconds = this.settingsService.settings.shortBreakLength * 60;
