@@ -67,7 +67,7 @@ import { EditProjectComponent } from './modal-windows/projects/edit-project/edit
     MdbModalModule,
     MdbFormsModule
   ],
-  providers: [],
+  providers: [ProjectsModalComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

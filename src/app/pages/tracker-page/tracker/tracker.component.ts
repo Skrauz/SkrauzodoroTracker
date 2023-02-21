@@ -1,21 +1,36 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Timespan } from 'src/app/database/timespans/timespanModel';
 import { TimespansService } from 'src/app/database/timespans/timespans.service';
 import { SoundService } from 'src/app/sound-service/sound.service';
+import { Project } from 'src/app/database/projects/projectModel';
+import { ProjectsService } from 'src/app/database/projects/projects.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',
   styleUrls: ['./tracker.component.scss', './../../shared/shared-inputs.scss'],
 })
-export class TrackerComponent implements OnDestroy {
+export class TrackerComponent implements OnDestroy, OnInit {
   constructor(
     private timespanService: TimespansService,
     private titleService: Title,
-    public soundService: SoundService
+    public soundService: SoundService,
+    private projectsService: ProjectsService
   ) {
     this.refreshTimer();
+  }
+
+  ngOnInit(): void {
+      this.refreshProjects();
+  }
+
+  projects$: Observable<Project[]> = new Observable();
+
+  refreshProjects() {
+    this.projects$ = this.projectsService.getProjects();
   }
 
   ngOnDestroy() {
@@ -27,9 +42,6 @@ export class TrackerComponent implements OnDestroy {
 
   taskName = '';
   projectName = '';
-
-  projects = ['project1', 'project2', 'project3'];
-  // placeholder projects
 
   timeString = '';
   timerOn = false;

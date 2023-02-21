@@ -57,20 +57,34 @@ import { BehaviorSubject } from 'rxjs';
 export class EditProjectComponent implements OnInit {
   name: string = '';
   project!: Project;
-  constructor(public modalRef: MdbModalRef<EditProjectComponent>, private projectsService: ProjectsService) {}
+  constructor(
+    public modalRef: MdbModalRef<EditProjectComponent>,
+    private projectsService: ProjectsService,
+    private projectsModalComponent: ProjectsModalComponent
+  ) {}
 
   ngOnInit(): void {
     this.projectsService.getProject(this.name).subscribe((project$) => {
       this.project = project$;
-    })
+    });
   }
 
   updateProject(projectName: string | null) {
     if (!projectName) {
-      alert("Project name is required")
+      alert('Project name is required');
       return;
     }
-    this.projectsService.updateProject(this.project)
+    const response = this.projectsService.updateProject(this.project);
+    response.subscribe({
+      next: (res) => {
+        // console.log(res);
+        this.projectsModalComponent.refreshProjects();
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Failed to update the project');
+      },
+    });
     this.modalRef.close();
     this.name = '';
   }
