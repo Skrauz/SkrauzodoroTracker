@@ -42,15 +42,6 @@ export class ProjectsService {
     let response = this.httpClient.post(this.url, project, {
       responseType: 'text',
     });
-    response.subscribe({
-      next: () => {
-        console.log('project saved successfuly');
-      },
-      error: (err) => {
-        alert('Failed to create a project');
-        console.error(err);
-      },
-    });
     return response;
   }
 
@@ -71,15 +62,6 @@ export class ProjectsService {
     let response = this.httpClient.put(`${this.url}/${project._id}`, project, {
       responseType: 'text',
     });
-    response.subscribe({
-      next: (res) => {
-        // console.log(res);
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Failed to update the project');
-      },
-    });
     return response;
   }
 
@@ -87,15 +69,6 @@ export class ProjectsService {
   deleteProject(id: string): Observable<string> {
     let response = this.httpClient.delete(`${this.url}/${id}`, {
       responseType: 'text',
-    });
-    response.subscribe({
-      next: (res) => {
-        // console.log(res);
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Failed to delete the project')
-      },
     });
     return response;
   }
