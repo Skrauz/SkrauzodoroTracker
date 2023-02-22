@@ -15,6 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { ToolbarComponent } from './toolbar-content/toolbar.component';
 import { TrackerPageComponent } from './pages/tracker-page/tracker-page.component';
@@ -32,6 +34,8 @@ import { IntegrationsModalComponent } from './modal-windows/integrations/integra
 import { ProjectsModalComponent } from './modal-windows/projects/projects-modal.component';
 import { AddProjectComponent } from './modal-windows/projects/add-project/add-project.component';
 import { EditProjectComponent } from './modal-windows/projects/edit-project/edit-project.component';
+import { AnalyticsToolbarComponent } from './pages/analytics/analytics-toolbar/analytics-toolbar.component';
+import { AnalyticsMainComponent } from './pages/analytics/analytics-main/analytics-main.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,8 @@ import { EditProjectComponent } from './modal-windows/projects/edit-project/edit
     ProjectsModalComponent,
     AddProjectComponent,
     EditProjectComponent,
+    AnalyticsToolbarComponent,
+    AnalyticsMainComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,9 @@ import { EditProjectComponent } from './modal-windows/projects/edit-project/edit
     HttpClientModule,
     LayoutModule,
     MdbModalModule,
-    MdbFormsModule
+    MdbFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [ProjectsModalComponent],
   bootstrap: [AppComponent],

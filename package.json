@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@fortawesome/angular-fontawesome": "^0.12.1",
+    "@types/chart.js": "^2.9.37",
+    "chart.js": "^4.2.1",
     "mdb-angular-ui-kit": "^4.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
