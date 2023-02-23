@@ -1,0 +1,16 @@
+@use './../../shared/shared-modal.scss';
+
+form-control {
+  color: #fff !important;
+}
+
+.chart-selector {
+  width: max-content;
+  max-width: 200px;
+  flex-grow: 2;
+  color: #fff !important;
+
+  label, input {
+    color: white
+  }
+}
