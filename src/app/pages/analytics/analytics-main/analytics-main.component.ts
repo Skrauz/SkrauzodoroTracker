@@ -14,4 +14,6 @@ export class AnalyticsMainComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  chartType: string = 'line';
 }

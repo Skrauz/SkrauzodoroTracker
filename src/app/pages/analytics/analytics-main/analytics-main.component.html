@@ -1,5 +1,18 @@
 <div class="bg-dark">
   <div class="card-body">
-    <h3>charts</h3>
+    <div class="d-flex flex-row-reverse">
+      <mdb-form-control class="chart-selector">
+        <select
+          class="form-select"
+          aria-label="Chart Type"
+          class="bg-dark form-control form-control-lg"
+          [(ngModel)]="chartType"
+        >
+        <option value="line">Line Chart</option>
+        <option value="bar">Bar Chart</option>
+      </select>
+      <i class="fa-solid fa-angle-down"></i>
+      </mdb-form-control>
+    </div>
   </div>
 </div>
