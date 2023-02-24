@@ -7,19 +7,37 @@
   >
     <mat-form-field>
       <mat-label>Task Name</mat-label>
-      <input matInput placeholder="Task Name" [(ngModel)]="analyticsService.taskName" />
+      <input
+        matInput
+        placeholder="Task Name"
+        [(ngModel)]="this.taskName"
+      />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Project Name</mat-label>
-      <input matInput placeholder="Project Name" [(ngModel)]="analyticsService.projectName" />
+      <input
+        matInput
+        placeholder="Project Name"
+        [(ngModel)]="this.projectName"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date" [(ngModel)]="analyticsService.startDate" />
-        <input matEndDate placeholder="End date" [(ngModel)]="analyticsService.endDate" />
+        <input
+          matStartDate
+          placeholder="Start date"
+          [(ngModel)]="this.startDate"
+          (dateChange)="this.applyLabelRange()"
+        />
+        <input
+          matEndDate
+          placeholder="End date"
+          [(ngModel)]="this.endDate"
+          (dateChange)="this.applyLabelRange()"
+        />
       </mat-date-range-input>
       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle
