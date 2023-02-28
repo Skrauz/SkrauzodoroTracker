@@ -1,27 +1,121 @@
-<div class="bg-dark">
-  <div class="card-body">
-    <div class="main-chart">
-      <div class="d-flex flex-row-reverse">
-        <mdb-form-control class="chart-selector">
-          <select
-            class="form-select"
-            aria-label="Chart Type"
-            class="bg-dark form-control form-control-lg"
-            [(ngModel)]="chartType"
-          >
-            <option value="line">Line Chart</option>
-            <option value="bar">Bar Chart</option>
-          </select>
-          <i class="fa-solid fa-angle-down"></i>
-        </mdb-form-control>
-      </div>
-      <div>
-        <canvas baseChart class="chart"
-        [data]="chartData"
-        [options]="chartOptions"
-        [type]="chartType"
+<div class="card-header">
+  <div class="d-flex justify-content-xl-between flex-xl-row flex-column">
+    <div class="header">
+      <h3>Dashboard</h3>
+    </div>
+    <div
+      class="d-flex flex-xl-row justify-content-xl justify-content-start flex-column flex-wrap"
+    >
+      <mat-form-field>
+        <mat-label>Task Name</mat-label>
+        <input matInput placeholder="Task Name" [(ngModel)]="this.taskName" />
+      </mat-form-field>
 
-        ></canvas>
+      <mat-form-field>
+        <mat-label>Project Name</mat-label>
+        <input
+          matInput
+          placeholder="Project Name"
+          [(ngModel)]="this.projectName"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            placeholder="Start date"
+            [(ngModel)]="this.startDate"
+            (dateChange)="this.applyDateRange()"
+          />
+          <input
+            matEndDate
+            placeholder="End date"
+            [(ngModel)]="this.endDate"
+            (dateChange)="this.applyDateRange()"
+          />
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="card-body">
+  <div class="bg-dark">
+    <div class="card-body">
+      <div class="main-chart">
+        <div class="d-flex flex-row-reverse">
+          <mdb-form-control class="chart-selector">
+            <select
+              class="form-select"
+              aria-label="Chart Type"
+              class="bg-dark form-control form-control-lg"
+              [(ngModel)]="chartType"
+            >
+              <option value="bar">Bar Chart</option>
+              <option value="line">Line Chart</option>
+            </select>
+            <i class="fa-solid fa-angle-down"></i>
+          </mdb-form-control>
+        </div>
+        <div>
+          <canvas
+            baseChart
+            class="chart"
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [type]="chartType"
+          ></canvas>
+          <div class="button-row">
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="randomize()"
+            >
+              Randomize
+            </button>
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="pushOne()"
+            >
+              Push
+            </button>
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="changeColor()"
+            >
+              Recolor
+            </button>
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="hideOne()"
+            >
+              Toggle Series B
+            </button>
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="pushOne()"
+            >
+              Toggle Series B
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

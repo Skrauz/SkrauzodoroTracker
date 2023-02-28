@@ -38,7 +38,6 @@ import { EditProjectComponent } from './modal-windows/projects/edit-project/edit
 
 import { PomoTimerComponent } from './pages/pomo-timer-page/pomo-timer/pomo-timer.component';
 import { InfoCardComponent } from './pages/shared/info-card/info-card.component';
-import { AnalyticsToolbarComponent } from './pages/analytics/analytics-toolbar/analytics-toolbar.component';
 import { AnalyticsMainComponent } from './pages/analytics/analytics-main/analytics-main.component';
 
 @NgModule({
@@ -57,7 +56,6 @@ import { AnalyticsMainComponent } from './pages/analytics/analytics-main/analyti
     ProjectsModalComponent,
     AddProjectComponent,
     EditProjectComponent,
-    AnalyticsToolbarComponent,
     AnalyticsMainComponent,
   ],
   imports: [
@@ -80,7 +78,7 @@ import { AnalyticsMainComponent } from './pages/analytics/analytics-main/analyti
     MatNativeDateModule,
     NgChartsModule
   ],
-  providers: [ProjectsModalComponent],
+  providers: [ProjectsModalComponent, AnalyticsMainComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
