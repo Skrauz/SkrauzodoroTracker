@@ -19,30 +19,6 @@
           [(ngModel)]="this.projectName"
         />
       </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
-          <input
-            matStartDate
-            placeholder="Start date"
-            [(ngModel)]="this.startDate"
-            (dateChange)="this.applyDateRange()"
-          />
-          <input
-            matEndDate
-            placeholder="End date"
-            [(ngModel)]="this.endDate"
-            (dateChange)="this.applyDateRange()"
-          />
-        </mat-date-range-input>
-        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
-      </mat-form-field>
     </div>
   </div>
 </div>
@@ -60,7 +36,7 @@
               [(ngModel)]="chartType"
             >
               <option value="bar">Bar Chart</option>
-              <option value="line">Line Chart</option>
+              <option value="scatter">Scatter Chart</option>
             </select>
             <i class="fa-solid fa-angle-down"></i>
           </mdb-form-control>
@@ -69,52 +45,10 @@
           <canvas
             baseChart
             class="chart"
-            [data]="lineChartData"
-            [options]="lineChartOptions"
+            [data]="chartData"
+            [options]="chartOptions"
             [type]="chartType"
           ></canvas>
-          <div class="button-row">
-            <button
-              mat-button
-              mat-raised-button
-              color="primary"
-              (click)="randomize()"
-            >
-              Randomize
-            </button>
-            <button
-              mat-button
-              mat-raised-button
-              color="primary"
-              (click)="pushOne()"
-            >
-              Push
-            </button>
-            <button
-              mat-button
-              mat-raised-button
-              color="primary"
-              (click)="changeColor()"
-            >
-              Recolor
-            </button>
-            <button
-              mat-button
-              mat-raised-button
-              color="primary"
-              (click)="hideOne()"
-            >
-              Toggle Series B
-            </button>
-            <button
-              mat-button
-              mat-raised-button
-              color="primary"
-              (click)="pushOne()"
-            >
-              Toggle Series B
-            </button>
-          </div>
         </div>
       </div>
     </div>
