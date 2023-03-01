@@ -1,28 +1,39 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartType, Chart, ChartConfiguration, ChartEvent } from 'chart.js';
+import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
+import {
+  ChartType,
+  Chart,
+  ChartConfiguration,
+  ChartEvent,
+  ChartData,
+} from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { Observable } from 'rxjs';
+import { Observable, last } from 'rxjs';
 import { Timespan } from 'src/app/database/timespans/timespanModel';
-// import {default as Annotation} from 'chartjs-plugin-annotation';
 import { TimespansService } from 'src/app/database/timespans/timespans.service';
+import { formatDateEnGB } from './formatDate';
+import { constructDatasets } from './constructDatasets';
 
 @Component({
   selector: 'app-analytics-main',
   templateUrl: './analytics-main.component.html',
   styleUrls: ['./analytics-main.component.scss'],
 })
+@Injectable({
+  providedIn: 'root',
+})
 export class AnalyticsMainComponent implements OnInit {
-  constructor(
-    private timespansService: TimespansService,
-  ) {}
+  constructor(private timespansService: TimespansService) {}
 
   ngOnInit(): void {
     this.refreshTimespans();
+    this.applyLabelRange();
+    this.chartData.datasets = constructDatasets(this.timespans$, this.chartData.labels);
+    this.timespans$.subscribe(() => {
+      this.mainChart?.update();
+    })
   }
 
-  @ViewChild(BaseChartDirective) chartMain?: BaseChartDirective;
-
-  chartType: ChartType = 'line';
+  public chartType: ChartType = 'bar';
 
   timespans$: Observable<Timespan[]> = new Observable();
 
@@ -30,57 +41,67 @@ export class AnalyticsMainComponent implements OnInit {
     this.timespans$ = this.timespansService.getTimespans();
   }
 
-  chartDateRange: string[] = ['a','b','c']
-
+  taskName?: string;
+  projectName?: string;
+  startDate?: Date;
+  endDate?: Date;
 
   public chartData: ChartConfiguration['data'] = {
-    labels: this.chartDateRange,
-    datasets: [
-      {
-        data: [65, 59, 80, 81, 56, 55, 40],
-        label: 'Test Data',
-        backgroundColor: 'rgba(148,159,177,0.2)',
-        borderColor: 'rgb(75, 192, 192)',
-        pointBackgroundColor: 'rgba(148,159,177,1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
-        fill: true,
-      },
-    ],
+    datasets: [],
+    labels: [],
   };
 
-  legendColor: string = 'rgba(255,255,255,0.8)';
   public chartOptions: ChartConfiguration['options'] = {
     plugins: {
       legend: {
-        labels: {
-          color: this.legendColor,
-        },
+        display: false
       },
-    },
-    elements: {
-      line: {
-        tension: 0,
-      },
+      title: {
+        display: true,
+        text: "Time spent on tasks in the last week"
+      }
     },
     scales: {
       y: {
-        ticks: {
-          color: this.legendColor,
+        title: {
+          display: true,
+          text: "Minutes"
         },
+        stacked: true,
         position: 'left',
-        grace: '10%',
-
+        ticks: {
+          color: 'rgba(255,255,255,0.8)',
+        },
         grid: {
           color: 'rgba(255,255,255,0.3)',
         },
       },
       x: {
+        stacked: true,
         ticks: {
-          color: this.legendColor
-        }
+          color: 'rgba(255,255,255,0.8)',
+        },
       },
     },
   };
+
+
+
+  @ViewChild(BaseChartDirective) mainChart?: BaseChartDirective;
+
+  applyLabelRange(): void {
+    this.chartData?.labels?.splice(0, this.chartData?.labels?.length);
+
+    // Generate latest week and push to the labels
+    let lastWeek: string[] = [];
+    let now = new Date();
+    for (let i = 0; i < 7; i++) {
+      lastWeek.push(formatDateEnGB(now));
+      now.setDate(now.getDate() - 1);
+    }
+    lastWeek.reverse();
+    lastWeek.forEach((date) => {
+      this.chartData?.labels?.push(date);
+    });
+  }
 }
