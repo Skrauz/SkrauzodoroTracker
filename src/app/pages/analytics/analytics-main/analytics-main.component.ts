@@ -56,10 +56,14 @@ export class AnalyticsMainComponent implements OnInit {
       legend: {
         display: false
       },
+      tooltip: {
+        displayColors: false
+      },
       title: {
         display: true,
         text: "Time spent on tasks in the last week"
       }
+
     },
     scales: {
       y: {
