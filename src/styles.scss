@@ -1,3 +1,4 @@
+@use 'sass:map';
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material'as mat;
@@ -7,11 +8,43 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@import './../node_modules/mdb-angular-ui-kit/assets/scss/mdb.scss';
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+$primary: map-get($map: skr.$skr-amber-palette, $key: 800) !default;
+$secondary: #9fa6b2 !default;
+$success: #14a44d !default;
+$danger: #dc4c64 !default;
+$warning: #e4a11b !default;
+$info: #54b4d3 !default;
+$light: #fbfbfb !default;
+$dark: skr.$skr-dark !default;
+
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'danger': $danger,
+  'warning': $warning,
+  'info': $info,
+  'light': $light,
+  'dark': $dark,
+) !default;
+
+$ripple: (
+  'primary': $primary,
+  'secondary': #e3ebf7,
+  'success': $success,
+  'danger': $danger,
+  'warning': $warning,
+  'info': $info,
+  'light': $light,
+  'dark': $dark,
+  ) !default;
+
+  @import './../node_modules/mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+  // Define the palettes for your theme using the Material Design palettes available in palette.scss
+  // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $SkrauzodoroTracker-primary: mat.define-palette(skr.$skr-amber-palette, 800, 300, 900);
 $SkrauzodoroTracker-accent: mat.define-palette(skr.$skr-cyan-palette, A700, A400, A700);
