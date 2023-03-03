@@ -4,7 +4,8 @@ import { formatDateEnGB } from "./formatDate";
 
 export function constructDatasets(
   timespans$: Observable<Timespan[]>,
-  labels?: unknown[]
+  labels?: unknown[],
+  filter?: {name: string, projectName: string}
 ): Dataset[] {
   let datasets: Dataset[] = [];
 

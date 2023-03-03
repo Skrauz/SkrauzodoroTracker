@@ -1,17 +1,15 @@
 import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
 import {
   ChartType,
-  Chart,
   ChartConfiguration,
-  ChartEvent,
-  ChartData,
 } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { Observable, last } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Timespan } from 'src/app/database/timespans/timespanModel';
 import { TimespansService } from 'src/app/database/timespans/timespans.service';
 import { formatDateEnGB } from './formatDate';
 import { constructDatasets } from './constructDatasets';
+import { convertMinsToHrsMins } from './minutesConverter';
 
 @Component({
   selector: 'app-analytics-main',
@@ -52,12 +50,37 @@ export class AnalyticsMainComponent implements OnInit {
   };
 
   public chartOptions: ChartConfiguration['options'] = {
+    interaction: {
+      intersect: true,
+      mode: 'index'
+    },
     plugins: {
       legend: {
         display: false
       },
       tooltip: {
-        displayColors: false
+        displayColors: false,
+        callbacks: {
+          footer: function(tooltipItems): string {
+            let sum = 0;
+
+            tooltipItems.forEach((item) => {
+              sum += item.parsed.y;
+            });
+            return 'Sum: ' + convertMinsToHrsMins(sum);
+          },
+          label: function(context) {
+            let label = context.dataset.label || '';
+
+            if (label) {
+                label += ': ';
+            }
+            if (context.parsed.y !== null) {
+                label += convertMinsToHrsMins(context.parsed.y);
+            }
+            return label;
+        }
+        }
       },
       title: {
         display: true,
