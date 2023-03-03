@@ -8,16 +8,26 @@
     >
       <mat-form-field>
         <mat-label>Task Name</mat-label>
-        <input matInput placeholder="Task Name" [(ngModel)]="this.taskName" />
+        <input
+          matInput
+          placeholder="Task Name"
+          [(ngModel)]="this.taskName"
+          (change)="filterChart()"
+        />
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Project Name</mat-label>
-        <input
-          matInput
-          placeholder="Project Name"
-          [(ngModel)]="this.projectName"
-        />
+        <mat-select [(ngModel)]="this.projectName">
+          <mat-option
+            *ngFor="let project of uniqueProjects"
+            [value]="project"
+            placeholder="Project Name"
+            (onSelectionChange)="filterChart()"
+          >
+            {{ project }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
   </div>

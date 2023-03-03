@@ -1,8 +1,5 @@
 import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
-import {
-  ChartType,
-  ChartConfiguration,
-} from 'chart.js';
+import { ChartType, ChartConfiguration } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { Observable } from 'rxjs';
 import { Timespan } from 'src/app/database/timespans/timespanModel';
@@ -23,13 +20,34 @@ export class AnalyticsMainComponent implements OnInit {
   constructor(private timespansService: TimespansService) {}
 
   ngOnInit(): void {
-    this.refreshTimespans();
     this.applyLabelRange();
-    this.chartData.datasets = constructDatasets(this.timespans$, this.chartData.labels);
+    this.refreshTimespans();
+    this.refreshChart();
+    this.timespans$.subscribe((timespans) => {
+      let timespanProjects: string[] = [];
+      timespans.forEach((timespan) => {
+        if (timespan.project) {
+          timespanProjects.push(timespan.project);
+        }
+      });
+
+      this.uniqueProjects = [...new Set(timespanProjects)];
+    });
+  }
+
+  refreshChart(filter?: { name?: string; projectName?: string }) {
+    this.chartData.datasets = constructDatasets(
+      this.timespans$,
+      this.chartData.labels,
+      filter
+    );
+    // todo: use then here later
     this.timespans$.subscribe(() => {
       this.mainChart?.update();
-    })
+    });
   }
+
+  uniqueProjects?: string[];
 
   public chartType: ChartType = 'bar';
 
@@ -49,50 +67,43 @@ export class AnalyticsMainComponent implements OnInit {
     labels: [],
   };
 
+  filterChart() {
+    this.refreshTimespans();
+    let filter = { name: this.taskName, projectName: this.projectName };
+    this.refreshChart(filter);
+  }
+
   public chartOptions: ChartConfiguration['options'] = {
-    interaction: {
-      intersect: true,
-      mode: 'index'
-    },
     plugins: {
       legend: {
-        display: false
+        display: false,
       },
       tooltip: {
         displayColors: false,
         callbacks: {
-          footer: function(tooltipItems): string {
-            let sum = 0;
-
-            tooltipItems.forEach((item) => {
-              sum += item.parsed.y;
-            });
-            return 'Sum: ' + convertMinsToHrsMins(sum);
-          },
-          label: function(context) {
+          label: function (context) {
             let label = context.dataset.label || '';
 
             if (label) {
-                label += ': ';
+              label += ': ';
             }
             if (context.parsed.y !== null) {
-                label += convertMinsToHrsMins(context.parsed.y);
+              label += convertMinsToHrsMins(context.parsed.y);
             }
             return label;
-        }
-        }
+          },
+        },
       },
       title: {
         display: true,
-        text: "Time spent on tasks in the last week"
-      }
-
+        text: 'Time spent on tasks in the last week',
+      },
     },
     scales: {
       y: {
         title: {
           display: true,
-          text: "Minutes"
+          text: 'Minutes',
         },
         stacked: true,
         position: 'left',
@@ -111,8 +122,6 @@ export class AnalyticsMainComponent implements OnInit {
       },
     },
   };
-
-
 
   @ViewChild(BaseChartDirective) mainChart?: BaseChartDirective;
 
