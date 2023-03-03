@@ -27,29 +27,13 @@
   <div class="bg-dark">
     <div class="card-body">
       <div class="main-chart">
-        <div class="d-flex flex-row-reverse">
-          <mdb-form-control class="chart-selector">
-            <select
-              class="form-select"
-              aria-label="Chart Type"
-              class="bg-dark form-control form-control-lg"
-              [(ngModel)]="chartType"
-            >
-              <option value="bar">Bar Chart</option>
-              <option value="scatter">Scatter Chart</option>
-            </select>
-            <i class="fa-solid fa-angle-down"></i>
-          </mdb-form-control>
-        </div>
-        <div>
-          <canvas
-            baseChart
-            class="chart"
-            [data]="chartData"
-            [options]="chartOptions"
-            [type]="chartType"
-          ></canvas>
-        </div>
+        <canvas
+          baseChart
+          class="chart"
+          [data]="chartData"
+          [options]="chartOptions"
+          [type]="chartType"
+        ></canvas>
       </div>
     </div>
   </div>
