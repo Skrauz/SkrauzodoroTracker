@@ -3,13 +3,13 @@ import { Timespan } from '../../../database/timespans/timespanModel';
 import { formatDateEnGB } from './formatDate';
 
 export function constructDatasets(
-  timespans$: Observable<Timespan[]>,
+  timespans: Timespan[],
   labels?: unknown[],
   filter?: { name?: string; projectName?: string }
-): Dataset[] {
+): Promise<Dataset[]> {
   let datasets: Dataset[] = [];
 
-  timespans$.subscribe((timespans) => {
+  return new Promise<Dataset[]>((resolve) => {
     timespans.forEach((timespan) => {
       const timespanEndDate = new Date(timespan.endTime);
       labels?.forEach((label, index) => {
@@ -54,8 +54,8 @@ export function constructDatasets(
         }
       });
     });
+    resolve(datasets);
   });
-  return datasets;
 }
 
 function getTimeDifference(date1: Date, date2: Date): number {

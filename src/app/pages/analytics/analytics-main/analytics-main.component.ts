@@ -19,33 +19,13 @@ import { convertMinsToHrsMins } from './minutesConverter';
 export class AnalyticsMainComponent implements OnInit {
   constructor(private timespansService: TimespansService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.applyLabelRange();
-    this.refreshTimespans();
+    await this.refreshTimespans();
     this.refreshChart();
-    this.timespans$.subscribe((timespans) => {
-      let timespanProjects: string[] = [];
-      timespans.forEach((timespan) => {
-        if (timespan.project) {
-          timespanProjects.push(timespan.project);
-        }
-      });
-
-      this.uniqueProjects = [...new Set(timespanProjects)];
-    });
   }
 
-  refreshChart(filter?: { name?: string; projectName?: string }) {
-    this.chartData.datasets = constructDatasets(
-      this.timespans$,
-      this.chartData.labels,
-      filter
-    );
-    // todo: use then here later
-    this.timespans$.subscribe(() => {
-      this.mainChart?.update();
-    });
-  }
+  @ViewChild(BaseChartDirective) mainChart?: BaseChartDirective;
 
   uniqueProjects?: string[];
 
@@ -53,9 +33,7 @@ export class AnalyticsMainComponent implements OnInit {
 
   timespans$: Observable<Timespan[]> = new Observable();
 
-  refreshTimespans() {
-    this.timespans$ = this.timespansService.getTimespans();
-  }
+  timespans: Timespan[] = [];
 
   taskName?: string;
   projectName?: string;
@@ -67,8 +45,37 @@ export class AnalyticsMainComponent implements OnInit {
     labels: [],
   };
 
-  filterChart() {
-    this.refreshTimespans();
+  refreshChart(filter?: { name?: string; projectName?: string }) {
+    constructDatasets(this.timespans, this.chartData.labels, filter).then(
+      (datasets) => {
+        this.chartData.datasets = datasets;
+        this.mainChart?.update();
+      }
+    );
+  }
+
+  refreshTimespans() {
+    return new Promise<void>((resolve) => {
+      this.timespans$ = this.timespansService.getTimespans();
+      this.timespans$.subscribe((timespans) => {
+        this.timespans = timespans;
+
+        let timespanProjects: string[] = [];
+        timespans.forEach((timespan) => {
+          if (timespan.project) {
+            timespanProjects.push(timespan.project);
+          }
+        });
+
+        this.uniqueProjects = [...new Set(timespanProjects)];
+
+        resolve();
+      });
+    });
+  }
+
+  async filterChart() {
+    await this.refreshTimespans();
     let filter = { name: this.taskName, projectName: this.projectName };
     this.refreshChart(filter);
   }
@@ -123,7 +130,6 @@ export class AnalyticsMainComponent implements OnInit {
     },
   };
 
-  @ViewChild(BaseChartDirective) mainChart?: BaseChartDirective;
 
   applyLabelRange(): void {
     this.chartData?.labels?.splice(0, this.chartData?.labels?.length);

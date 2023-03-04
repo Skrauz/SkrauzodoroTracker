@@ -20,6 +20,12 @@
         <mat-label>Project Name</mat-label>
         <mat-select [(ngModel)]="this.projectName">
           <mat-option
+            [value]=""
+            (onSelectionChange)="filterChart()"
+          >
+          -
+          </mat-option>
+          <mat-option
             *ngFor="let project of uniqueProjects"
             [value]="project"
             placeholder="Project Name"
