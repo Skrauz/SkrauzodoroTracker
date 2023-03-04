@@ -92,27 +92,27 @@
       </select>
       <i class="fa-solid fa-angle-down"></i>
     </mdb-form-control>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-primary"
-      (click)="modalRef.close()"
-    >
-      Close
-    </button>
     <button class="btn btn-outline-primary" (click)="testSound()">
       Test Sound
     </button>
-    <button
-      type="button"
-      class="btn btn-outline-primary"
-      (click)="restoreDefaultSettings()"
-    >
-      Restore Defaults
-    </button>
-    <button type="button" class="btn btn-primary" (click)="saveSettings()">
-      Save Changes
-    </button>
   </div>
-</div>
+  <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="modalRef.close()"
+        >
+        Close
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="restoreDefaultSettings()"
+      >
+        Restore Defaults
+      </button>
+      <button type="button" class="btn btn-primary" (click)="saveSettings()">
+        Save Changes
+      </button>
+    </div>
+  </div>
