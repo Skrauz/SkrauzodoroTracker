@@ -11,9 +11,12 @@ export function constructDatasets(
 
   return new Promise<Dataset[]>((resolve) => {
     timespans.forEach((timespan) => {
+
       const timespanEndDate = new Date(timespan.endTime);
+
       labels?.forEach((label, index) => {
         if (label == formatDateEnGB(timespanEndDate)) {
+
           let dataset: Dataset = {
             data: [],
             label: '',
@@ -27,14 +30,18 @@ export function constructDatasets(
             fill: 'origin',
           };
 
-          let labelProject =
-            timespan.project != 'Unnamed Project' ? `${timespan.project}` : '';
+          let labelProject = timespan.project
+            ? `${timespan.project}`
+            : 'Unnamed Project';
+
           if (filter?.projectName && filter?.projectName != labelProject) {
             return;
           }
+
           let labelTaskName = timespan.name
             ? `${timespan.name}`
             : 'Unnamed Task';
+
           if (filter?.name && filter?.name != labelTaskName) {
             return;
           }
