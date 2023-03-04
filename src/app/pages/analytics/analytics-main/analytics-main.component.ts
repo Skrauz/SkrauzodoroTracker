@@ -81,6 +81,7 @@ export class AnalyticsMainComponent implements OnInit {
   }
 
   public chartOptions: ChartConfiguration['options'] = {
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,

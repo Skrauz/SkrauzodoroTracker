@@ -19,11 +19,8 @@
       <mat-form-field>
         <mat-label>Project Name</mat-label>
         <mat-select [(ngModel)]="this.projectName">
-          <mat-option
-            [value]=""
-            (onSelectionChange)="filterChart()"
-          >
-          -
+          <mat-option [value]="" (onSelectionChange)="filterChart()">
+            All Projects
           </mat-option>
           <mat-option
             *ngFor="let project of uniqueProjects"
@@ -40,17 +37,13 @@
 </div>
 
 <div class="card-body">
-  <div class="bg-dark">
-    <div class="card-body">
-      <div class="main-chart">
-        <canvas
-          baseChart
-          class="chart"
-          [data]="chartData"
-          [options]="chartOptions"
-          [type]="chartType"
-        ></canvas>
-      </div>
-    </div>
+  <div class="main-chart">
+    <canvas
+      baseChart
+      class="chart"
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType"
+    ></canvas>
   </div>
 </div>
