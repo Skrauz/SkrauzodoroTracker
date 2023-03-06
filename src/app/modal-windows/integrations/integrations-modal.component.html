@@ -25,17 +25,18 @@
       class="btn btn-primary"
       (click)="constructApi(this.todoistToken)"
     >
-      Connect Todoist
+      Connect Todoist <i class="fa-solid fa-plug-circle-plus"></i>
     </button>
     <p>
       <a href="https://todoist.com/app/settings/integrations/developer" target="_blank">Click here</a> to view your token
     </p>
     <button
+      *ngIf="tokenValid && todoistApi"
       type="button"
       class="btn btn-outline-primary"
-      (click)="getProjects()"
+      (click)="importProjects()"
     >
-      Import Projects
+      Import Projects <i class="fa-solid fa-file-import"></i>
     </button>
   </div>
   <div class="modal-footer">
