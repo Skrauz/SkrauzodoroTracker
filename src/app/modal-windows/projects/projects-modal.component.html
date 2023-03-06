@@ -20,8 +20,8 @@
               {{ project.name }}
           </td>
           <td class="d-flex flex-column width-options">
-            <button type="button" class="btn btn-warning" (click)="openEditProject(project.name)">Edit</button>
-            <button type="button" class="btn btn-danger" (click)="deleteProject(project._id!)">Delete</button>
+            <button type="button" class="btn btn-warning" (click)="openEditProject(project.name)">Edit <i class="fa-solid fa-pencil"></i></button>
+            <button type="button" class="btn btn-danger" (click)="deleteProject(project._id!)">Delete <i class="fa-solid fa-x"></i></button>
           </td>
         </tr>
       </tbody>
