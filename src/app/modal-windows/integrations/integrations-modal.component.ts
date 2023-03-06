@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { TodoistApi } from '@doist/todoist-api-typescript';
+import { getCookie, setCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-integrations-modal',
@@ -11,8 +12,18 @@ import { TodoistApi } from '@doist/todoist-api-typescript';
     './integrations-modal.component.scss',
   ],
 })
-export class IntegrationsModalComponent {
+export class IntegrationsModalComponent implements OnInit {
   constructor(public modalRef: MdbModalRef<IntegrationsModalComponent>) {}
+
+  ngOnInit(): void {
+    if(getCookie("TodoistAPIToken")) {
+      this.todoistToken = getCookie("TodoistAPIToken");
+    }
+  }
+
+  saveTokenToCookies() {
+    setCookie("TodoistAPIToken", this.todoistToken);
+  }
 
   todoistToken?: string;
 

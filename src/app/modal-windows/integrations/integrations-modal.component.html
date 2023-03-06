@@ -14,6 +14,7 @@
         id="formControlSm"
         class="form-control form-control-lg"
         [(ngModel)]="todoistToken"
+        (change)="saveTokenToCookies()"
       />
       <label mdbLabel class="form-label" for="formControlSm"
         >Your Todoist API Token</label
