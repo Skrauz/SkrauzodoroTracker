@@ -23,7 +23,7 @@
             All Projects
           </mat-option>
           <mat-option
-            *ngFor="let project of uniqueProjects"
+            *ngFor="let project of uniqueProjects | orderBy:'project'"
             [value]="project"
             placeholder="Project Name"
             (onSelectionChange)="filterChart()"

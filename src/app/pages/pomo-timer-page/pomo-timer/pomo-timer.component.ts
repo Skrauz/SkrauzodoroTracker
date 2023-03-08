@@ -7,6 +7,7 @@ import { Project } from 'src/app/database/projects/projectModel';
 import { ProjectsService } from 'src/app/database/projects/projects.service';
 import { SettingsService } from 'src/app/settings-service/settings.service';
 import { Observable } from 'rxjs';
+import { OrderByPipe } from 'src/app/order-by-pipe/order-by.pipe';
 
 @Component({
   selector: 'app-pomo-timer',

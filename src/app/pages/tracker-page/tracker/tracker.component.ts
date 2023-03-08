@@ -6,6 +6,7 @@ import { SoundService } from 'src/app/sound-service/sound.service';
 import { Project } from 'src/app/database/projects/projectModel';
 import { ProjectsService } from 'src/app/database/projects/projects.service';
 import { Observable } from 'rxjs';
+import { OrderByPipe } from 'src/app/order-by-pipe/order-by.pipe';
 
 
 @Component({

@@ -7,6 +7,7 @@ import { TimespansService } from 'src/app/database/timespans/timespans.service';
 import { formatDateEnGB } from './formatDate';
 import { constructDatasets } from './constructDatasets';
 import { convertMinsToHrsMins } from './minutesConverter';
+import { OrderByPipe } from 'src/app/order-by-pipe/order-by.pipe';
 
 @Component({
   selector: 'app-analytics-main',
