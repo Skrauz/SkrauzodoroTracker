@@ -40,6 +40,8 @@ import { PomoTimerComponent } from './pages/pomo-timer-page/pomo-timer/pomo-time
 import { InfoCardComponent } from './pages/shared/info-card/info-card.component';
 import { AnalyticsMainComponent } from './pages/analytics/analytics-main/analytics-main.component';
 
+import { OrderByPipe } from './order-by-pipe/order-by.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +59,7 @@ import { AnalyticsMainComponent } from './pages/analytics/analytics-main/analyti
     AddProjectComponent,
     EditProjectComponent,
     AnalyticsMainComponent,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,
