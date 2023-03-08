@@ -1,9 +1,9 @@
-# SkrauzodoroTracker - MEAN Time Tracking and Management Tool
+# Skrauzodoro Tracker - MEAN Time Tracking and Management Tool
 
 Skrauzodoro Tracker is a customizable fullstack time tracking and management tool built with the MEAN (MongoDB, ExpressJS, Angular, NodeJS) stack. The application came from my need for a straightforward time tracking solution, capable of analysing gathered records.
 App is capable of tracking time spent working on specific tasks and projects using a classic stopwatch or a <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">Pomodoro Technique</a>.
 
-<hr>
+![tracking overview](https://user-images.githubusercontent.com/89979928/223772460-9e015a3d-0971-4299-9ed0-4c08b94e4c33.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
