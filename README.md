@@ -21,7 +21,7 @@ User is able to create, read, update and delete projects. In addition to adjusti
 
 ## How to run the project
   1. Download and install MongoDB Community Server - https://www.mongodb.com/try/download/community
-  2. Clone the serverside part of the application - https://github.com/Skrauz/SkrauzodoroTracker-Server
+  2. Clone the serverside part of the application - https://github.com/Skrauz/SkrauzodoroTracker-Server (it's mandatory for full functionality)
   3. Run `npm install` and `npm start` in server's directory
   4. Clone this repo
   5. Run `npm install` and `ng serve -o` in client's directory to serve the project automatically navigate to `http://localhost:4200/`
